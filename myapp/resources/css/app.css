@@ -1,1 +1,24 @@
 @import "./tailwind.css";
+
+.fundo {
+  background-color: #F2F2F2;
+}
+
+.fundo2 {
+  background-color: #5e7ef9;
+}
+
+.fonte {
+  font-family: 'Poppins';
+  color: #F2F2F2;
+  font: bold;
+}
+
+.fonte2 {
+  font-family: 'Poppins';
+  color: #5e7ef9;
+  font: bold;
+}
+
+
+
