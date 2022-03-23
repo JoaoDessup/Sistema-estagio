@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,15 +18,17 @@
     <div class="w-full h-screen md:w-2/3 flex flex-col">
       <p class="fonte2 text-center text-4xl mt-40 mb-16">Cadastre-se:</p>
       <form action="" method="post" class="flex flex-col">
-        <input type="text" name="Nome Completo" id="" class="rounded-xl mt-5 p-4 mx-24">
-        <input type="email" name="Email" id="" class="rounded-xl mt-5 p-4 mx-24">
-        <input type="password" name="Senha" id="" class="rounded-xl mt-5 p-4 mx-24">
-        <input type="password" name="Confirme a Senha" id="" class="rounded-xl mt-5 p-4 mx-24">
+        <input type="text" name="Nome Completo" id="" class="rounded-xl mt-5 p-4 mx-24" placeholder="Nome Completo">
+        <input type="email" name="Email" id="" class="rounded-xl mt-5 p-4 mx-24" placeholder="E-mail">
+        <input type="password" name="Senha" id="" class="rounded-xl mt-5 p-4 mx-24" placeholder="Senha">
+        <input type="password" name="Confirme a Senha" id="" class="rounded-xl mt-5 p-4 mx-24" placeholder="Confirme a Senha">
         <input type="submit" value="Cadastrar" class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 mx-auto px-8">
   
       </form>
     </div>
-    
   </div>
+
+  @!component('component/footer')
+
 </body>
 </html>

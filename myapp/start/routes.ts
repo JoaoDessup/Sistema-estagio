@@ -27,3 +27,7 @@ Route.get('/', async ({ view }) => {
 Route.get('/cadastro', async ({ view }) => {
   return view.render('cadastro')
 })
+
+Route.get('/login', async ({ view }) => {
+  return view.render('login')
+})
