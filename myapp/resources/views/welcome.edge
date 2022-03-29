@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Teste Cadastro</title>
-    <link rel="shortcut icon" href="/favicon.ico">
+    <title>UJobs</title>
+    <link rel="shortcut icon" href="/images/logo.png">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/app.css') }}">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
@@ -17,8 +17,14 @@
 
     <div class=" w-full h-screen md:w-2/3 flex flex-col">
       <p class="fonte2 text-center mt-64 text-4xl">Como você se identifica ?</p>
-      <input type="submit" value="Estudante" class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 md:mx-32 mx-auto px-10">
-      <input type="submit" value="Corporativo" class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 md:mx-32 mx-auto px-8">
+      <button onclick="window.location='/cadastro'" type="submit" class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 md:mx-32 mx-auto px-10">
+        Estudante
+      </button>
+      <button onclick="window.location='/cadastro'" type="submit" class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 md:mx-32 mx-auto px-10">
+        Corporativo
+      </button>
+      {{--  <input type="submit" value="Estudante" class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 md:mx-32 mx-auto px-10">  --}}
+      {{--  <input type="submit" value="Corporativo" class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 md:mx-32 mx-auto px-8">  --}}
     </div>
     
   </div>

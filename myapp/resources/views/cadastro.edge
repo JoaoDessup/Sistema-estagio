@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Teste Cadastro</title>
+    <title>UJobs</title>
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/app.css') }}">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
@@ -22,8 +22,10 @@
         <input type="email" name="Email" id="" class="rounded-xl mt-5 p-4 mx-24" placeholder="E-mail">
         <input type="password" name="Senha" id="" class="rounded-xl mt-5 p-4 mx-24" placeholder="Senha">
         <input type="password" name="Confirme a Senha" id="" class="rounded-xl mt-5 p-4 mx-24" placeholder="Confirme a Senha">
-        <input type="submit" value="Cadastrar" class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 mx-auto px-8">
-  
+        {{--  <input type="submit" value="Cadastrar" class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 mx-auto px-8">  --}}
+        <button onclick="window.location='/vagas'" {{--type="submit"--}} class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 mx-auto px-8">
+          Cadastrar
+        </button>
       </form>
     </div>
   </div>

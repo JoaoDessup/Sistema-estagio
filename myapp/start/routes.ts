@@ -27,7 +27,22 @@ Route.get('/', async ({ view }) => {
 Route.get('/cadastro', async ({ view }) => {
   return view.render('cadastro')
 })
+Route.post('/cadastro', async ({ view }) => {
+  return view.render('vagas');
+})
 
 Route.get('/login', async ({ view }) => {
   return view.render('login')
+})
+
+Route.get('/vagas', async ({ view }) => {
+  return view.render('vagas')
+})
+
+Route.get('/chat', async ({ view }) => {
+  return view.render('chat')
+})
+
+Route.get('/faq', async ({ view }) => {
+  return view.render('layouts/faq')
 })
