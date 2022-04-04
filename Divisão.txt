@@ -1,0 +1,28 @@
+- Grupo 1: Heber, Lacerda e Rafaela (Empresa)
+    Telas:
+        1. Perfil Empresa
+            - Incluindo Cadastro
+        2. Criação Vagas no Feed
+            - Feed voltado a criação de vagas
+        3. Lista de relação de Vagas
+            - Local onde terá os candidatos à vaga, com a opção de visualizar
+            perfil e entrar em contato.
+        4. Criação de questionário
+        5. Processo seletivo
+            - Tela onde poderá acompanhar os resultados do questionário e demais
+            requisitos e andamentos.
+
+- Grupo 2: Kevyn, Dessup e Walter (Aluno)
+    Telas:
+        1. Perfil Aluno
+            -Incluindo Cadastro
+        2. Procura Vagas no Feed
+            - Feed voltado a procura de vagas com opção de filtro e destaques.
+            - Procura de empresas com a opção de visualizar suas vagas.
+        3. Minhas vagas
+            - Local onde poderá ver o andamento do processo de inclusão.
+
+- Sistema (Ambos os grupos em conjunto):
+    Telas:
+        1. Mensagens
+        2. Forum/FAQ
