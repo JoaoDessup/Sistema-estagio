@@ -1,19 +1,33 @@
-<header class="bg-white text-gray-600 body-font">
-    <div class="mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-        <img src="images/logo.png" alt="logo" class="w-24">
-      </a>
-      <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex flex-wrap items-center text-base justify-center">
-        {{--  <a href="/feed" title="" class="mr-5 hover:text-gray-900" >Feed </a>  --}}
-        <a href="/vagas" title="Vagas" class="mr-5 hover:text-gray-900">Vagas</a>
-        <a href="/chat" title="Mensagens" class="mr-5 hover:text-gray-900">Mensagens</a>
-        <a href="/faq" title="FAQ" class="mr-5 hover:text-gray-900">FAQ</a>
-      </nav>
-        <button title="Logout" onclick="window.location='/login'" class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Logout
-        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-          <path d="M5 12h14M12 5l7 7-7 7"></path>
-        </svg>
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/app.css') }}">
+<header class="bg-gray-800 text-white body-font">
+  <div class="mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+
+    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+      <img src="images/logo.png" alt="logo" class="w-24 bg-white rounded-full">
+    </a>
+
+    <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex flex-wrap items-center text-base justify-center container">
+      <a href="/vagas" title="Feed" class="mx-20 hover:text-blue-500">Feed</a>
+      <a href="/chat" title="Mensagens" class="mx-20 hover:text-blue-500">Mensagens</a>
+      <a href="/faq" title="FAQ" class="mx-20 hover:text-blue-500">FAQ</a>
+    </nav>
+
+    {{--  <button title="Logout" onclick="window.location='/login'" class="inline-flex items-center bg-blue-500 border-0 py-1 px-3 focus:outline-none hover:bg-gray-500 rounded text-base mt-4 md:mt-0">Logout
+      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7"></path>
+      </svg>
+    </button>  --}}
+
+    <div class="dropdown">
+      <button class="dropbtn">Menu
+        <i class="fa fa-caret-down"></i>
       </button>
+      <div class="dropdown-content mx-auto">
+        <a href="#" class="py-2">Meu Perfil</a>
+        <a href="#" class="py-2">Minhas Vagas</a>
+        <a href="/login" class="py-2">Logout</a>
+      </div>
     </div>
-  </header>
-  
+
+  </div>
+</header>
