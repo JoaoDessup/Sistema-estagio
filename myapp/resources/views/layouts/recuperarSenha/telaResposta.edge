@@ -1,0 +1,23 @@
+@layout('layouts/main')
+
+@section('body')
+
+<body class="fundo h-full">
+
+  <section class="text-gray-600 body-font">
+    <div class="px-5 justify-center flex flex-wrap items-center w-screen h-full">
+      <div class="relative mb-0">
+        <img alt="feature" class="object-cover object-center" src="/images/logo.png">
+      </div>
+
+      <div class=" px-8 py-12 justify-center flex flex-wrap items-center w-screen h-full">
+        <div class="bg-white rounded-2xl p-16 flex flex-col">
+          <h2 class="text-gray-900 text-2xl font-bold title-font mb-5">Nossa equipe entrará em contato via E-mail o quanto antes!</h2>
+          
+          <button onclick="window.location='/login'"
+            class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-3xl">Voltar ao login</button>
+        </div>
+      </div>
+</body>
+
+@end

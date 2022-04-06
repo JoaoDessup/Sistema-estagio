@@ -20,9 +20,15 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async ({ view }) => {
-  return view.render('welcome')
-})
+Route.get('/', 'SessionsController.welcome')
+
+Route.get('/esquecisenha', 'SessionsController.forgetPass')
+
+Route.post('/estudante/esquecisenha', 'SessionsController.recoverPassStudent')
+
+Route.post('/empresa/esquecisenha', 'SessionsController.recoverPassCompany')
+
+Route.get('/recover', 'SessionsController.recover')
 
 Route.post('/estudante/cadastro', async ({ view }) => {
   const tipo = 'estudante'
