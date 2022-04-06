@@ -13,7 +13,13 @@ export default class Vagas extends BaseSchema {
       table.string('tipo').notNullable()
       table.float('salario').notNullable()
       table.string('descricao').notNullable()
-      table.integer('empresas_id').references('empresas.id').notNullable().unique()
+      table
+        .integer('empresas_id')
+        .unsigned()
+        .references('empresas.id')
+        .notNullable()
+        .unique()
+        .onDelete('CASCADE')
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
