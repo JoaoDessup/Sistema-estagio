@@ -3,9 +3,10 @@ import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 export default class Vagas extends BaseSchema {
   protected tableName = 'vagas'
 
-  public async up () {
+  public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
+      table.string('nome').notNullable()
       table.string('estado').notNullable()
       table.string('cidade').notNullable()
       table.string('area').notNullable()
@@ -22,7 +23,7 @@ export default class Vagas extends BaseSchema {
     })
   }
 
-  public async down () {
+  public async down() {
     this.schema.dropTable(this.tableName)
   }
 }

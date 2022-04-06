@@ -37,3 +37,7 @@ Route.post('/empresa/cadastro', async ({ view }) => {
 Route.get('/login', async ({ view }) => {
   return view.render('login')
 })
+
+Route.get('/teste', async ({ view }) => {
+  return view.render('grupo-1/tela1')
+})

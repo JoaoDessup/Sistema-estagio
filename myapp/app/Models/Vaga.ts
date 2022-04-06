@@ -7,6 +7,9 @@ export default class Vaga extends BaseModel {
   public id: number
 
   @column()
+  public nome: string
+
+  @column()
   public estado: string
 
   @column()

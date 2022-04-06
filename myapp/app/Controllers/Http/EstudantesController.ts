@@ -1,6 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-export default class EmpresasController {
+export default class EstudantesController {
   public async index({}: HttpContextContract) {}
 
   public async create({}: HttpContextContract) {}
