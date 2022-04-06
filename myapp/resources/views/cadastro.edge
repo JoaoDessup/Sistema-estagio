@@ -13,17 +13,16 @@
       <fieldset>
         <form action="" method="post" class="flex flex-col">
           @if(tipo == 'estudante')
-          @!component('components/form/input', {type: "text", name: "Nome", placeholder: "Nome Completo"})
-          @!component('components/form/input', {type: "text", name: "Matricula", placeholder: "Matrícula"})
-          @!component('components/form/input', {type: "date", name: "Nascimento", placeholder: "Data de Nascimento"})
+          @!form.input({type: "text", name: "Nome", placeholder: "Nome Completo"})
+          @!form.input({type: "text", name: "Matricula", placeholder: "Matrícula"})
+          @!form.input({type: "date", name: "Nascimento", placeholder: "Data de Nascimento"})
           @else
-          @!component('components/form/input', {type: "text", name: "Nome", placeholder: "Nome da Instituição"})
-          @!component('components/form/input', {type: "text", name: "Cnpj", placeholder: "CNPJ"})
+          @!form.input({type: "text", name: "Nome", placeholder: "Nome da Instituição"})
+          @!form.input({type: "text", name: "Cnpj", placeholder: "CNPJ"})
           @endif
-          @!component('components/form/input', {type: "email", name: "Email", placeholder: "E-mail"})
-          @!component('components/form/input', {type: "password", name: "Senha", placeholder: "Senha"})
-          @!component('components/form/input',
-          {type: "password",name: "Confirme sua Senha", placeholder: "Confirme sua Senha"})
+          @!form.input({type: "email", name: "Email", placeholder: "E-mail"})
+          @!form.input({type: "password", name: "Senha", placeholder: "Senha"})
+          @!form.input({type: "password",name: "Confirme sua Senha", placeholder: "Confirme sua Senha"})
           <button type="submit"
             class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 mx-auto px-8">
             Cadastrar
