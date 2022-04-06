@@ -3,28 +3,28 @@
 
 @section('body')
 
-  <body class="fundo h-screen">
-    <div class="w-full flex flex-wrap">
+<body class="fundo h-screen">
+  <div class="w-full flex flex-wrap">
 
-      @!component('component/log')
+    @!component('components/log')
 
-      <div class=" w-full h-screen md:w-2/3 flex flex-col">
-        <p class="fonte2 text-center mt-64 text-4xl">Como você se identifica ?</p>
-        <form action="/estudante/cadastro" method="get"
-          class="flex fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 md:mx-32 mx-auto items-center justify-center">
-          <button type="submit" class="w-full h-full p-4">
-            Estudante
-          </button>
-        </form>
-        <form action="/empresa/cadastro" method="get"
-          class="flex fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 md:mx-32 mx-auto items-center justify-center">
-          <button type="submit" class="w-full h-full p-4">
-            Corporativo
-          </button>
-        </form>
-        {{--  <input type="submit" value="Estudante" class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 md:mx-32 mx-auto px-10">  --}}
-        {{--  <input type="submit" value="Corporativo" class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 md:mx-32 mx-auto px-8">  --}}
-      </div>
+    <div class=" w-full h-screen md:w-2/3 flex flex-col">
+      <p class="fonte2 text-center mt-64 text-4xl">Como você se identifica ?</p>
+      <form action="/estudante/cadastro" method="get"
+        class="flex fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 md:mx-32 mx-auto items-center justify-center">
+        <button type="submit" class="w-full h-full p-4">
+          Estudante
+        </button>
+      </form>
+      <form action="/empresa/cadastro" method="get"
+        class="flex fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 md:mx-32 mx-auto items-center justify-center">
+        <button type="submit" class="w-full h-full p-4">
+          Corporativo
+        </button>
+      </form>
+      {{--  <input type="submit" value="Estudante" class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 md:mx-32 mx-auto px-10">  --}}
+      {{--  <input type="submit" value="Corporativo" class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 md:mx-32 mx-auto px-8">  --}}
     </div>
-  </body>
+  </div>
+</body>
 @end

@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>UJobs</title>
-    <link rel="shortcut icon" href="/images/logo.png">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/app.css') }}">
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>UJobs</title>
+  <link rel="shortcut icon" href="/images/logo.png">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/app.css') }}">
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
 </head>
-<body class="fundo h-full">
-    {{--  @!component('component/nav')  --}}
-    <section class="text-gray-600 body-font">
-      <div class="px-5 justify-center flex flex-wrap items-center w-screen h-full">
-        <div class="relative mb-0">
-          <img alt="feature" class="object-cover object-center" src="/images/logo.png">
-        </div>
 
-    <div class=" px-5 py-12 justify-center flex flex-wrap items-center w-screen h-full">
+<body class="fundo h-full">
+
+  <section class="text-gray-600 body-font">
+    <div class="px-5 justify-center flex flex-wrap items-center w-screen h-full">
+      <div class="relative mb-0">
+        <img alt="feature" class="object-cover object-center" src="/images/logo.png">
+      </div>
+
+      <div class=" px-5 py-12 justify-center flex flex-wrap items-center w-screen h-full">
         <div class="bg-white rounded-2xl p-8 flex flex-col">
           <h2 class="text-gray-900 text-2xl font-bold title-font mb-5">Login</h2>
           <div class="relative mb-4">
             <label for="email" class="leading-7 text-lg text-gray-600">E-mail</label>
-            <input type="email" id="email" name="email" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-2xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            <input type="email" id="email" name="email"
+              class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-2xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
           </div>
           <div class="relative mb-4">
             <label for="password" class="leading-7 text-lg text-gray-600">Senha</label>
-            <input type="password" id="password" name="password" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-2xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            <input type="password" id="password" name="password"
+              class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-2xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
           </div>
-          <button onclick="window.location='/vagas'"class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-3xl">Entrar</button>
+          <button onclick="window.location='/vagas'"
+            class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-3xl">Entrar</button>
           <a class="text-lg fontehover hover:text-gray-500 my-3 text-center" href="/login">Esqueci a minha senha</a>
           <a class="text-lg fontehover hover:text-gray-500 text-center" href="/cadastro">Não possuo cadastro</a>
         </div>
-    </div>
+      </div>
 </body>
+
 </html>

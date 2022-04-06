@@ -2,36 +2,36 @@
 
 @section('body')
 
-  </head>
+</head>
 
-  <body class="fundo h-screen">
-    <div class="w-full flex flex-wrap ">
-      @!component('component/log')
+<body class="fundo h-screen">
+  <div class="w-full flex flex-wrap ">
+    @!component('components/log')
 
-      <div class="w-full h-screen md:w-2/3 flex flex-col">
-        <p class="fonte2 text-center text-4xl mt-24 mb-16">Cadastre-se:</p>
-        <fieldset>
-          <form action="" method="post" class="flex flex-col">
-            @if(tipo == 'estudante')
-            @!component('component/form/input', {type: "text", name: "Nome", placeholder: "Nome Completo"})
-            @!component('component/form/input', {type: "text", name: "Matricula", placeholder: "Matrícula"})
-            @!component('component/form/input', {type: "date", name: "Nascimento", placeholder: "Data de Nascimento"})
-            @else
-            @!component('component/form/input', {type: "text", name: "Nome", placeholder: "Nome da Instituição"})
-            @!component('component/form/input', {type: "text", name: "Cnpj", placeholder: "CNPJ"})
-            @endif
-            @!component('component/form/input', {type: "email", name: "Email", placeholder: "E-mail"})
-            @!component('component/form/input', {type: "password", name: "Senha", placeholder: "Senha"})
-            @!component('component/form/input',
-            {type: "password",name: "Confirme sua Senha", placeholder: "Confirme sua Senha"})
-            <button type="submit"
-              class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 mx-auto px-8">
-              Cadastrar
-            </button>
-          </form>
-        </fieldset>
-      </div>
+    <div class="w-full h-screen md:w-2/3 flex flex-col">
+      <p class="fonte2 text-center text-4xl mt-24 mb-16">Cadastre-se:</p>
+      <fieldset>
+        <form action="" method="post" class="flex flex-col">
+          @if(tipo == 'estudante')
+          @!component('components/form/input', {type: "text", name: "Nome", placeholder: "Nome Completo"})
+          @!component('components/form/input', {type: "text", name: "Matricula", placeholder: "Matrícula"})
+          @!component('components/form/input', {type: "date", name: "Nascimento", placeholder: "Data de Nascimento"})
+          @else
+          @!component('components/form/input', {type: "text", name: "Nome", placeholder: "Nome da Instituição"})
+          @!component('components/form/input', {type: "text", name: "Cnpj", placeholder: "CNPJ"})
+          @endif
+          @!component('components/form/input', {type: "email", name: "Email", placeholder: "E-mail"})
+          @!component('components/form/input', {type: "password", name: "Senha", placeholder: "Senha"})
+          @!component('components/form/input',
+          {type: "password",name: "Confirme sua Senha", placeholder: "Confirme sua Senha"})
+          <button type="submit"
+            class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 mx-auto px-8">
+            Cadastrar
+          </button>
+        </form>
+      </fieldset>
     </div>
+  </div>
 
-  </body>
+</body>
 @end
