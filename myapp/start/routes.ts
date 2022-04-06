@@ -24,16 +24,16 @@ Route.get('/', async ({ view }) => {
   return view.render('welcome')
 })
 
-Route.get('/cadastro', async ({ view }) => {
-  return view.render('cadastro')
+Route.get('/estudante/cadastro', async ({ view }) => {
+  const tipo = 'estudante'
+  return view.render('cadastro', { tipo })
 })
 
-Route.post('/cadastro', async ({ view }) => {
-  return view.render('login');
+Route.get('/empresa/cadastro', async ({ view }) => {
+  const tipo = 'empresa'
+  return view.render('cadastro', { tipo })
 })
 
 Route.get('/login', async ({ view }) => {
   return view.render('login')
 })
-
-
