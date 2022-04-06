@@ -30,15 +30,18 @@ Route.post('/empresa/esquecisenha', 'SessionsController.recoverPassCompany')
 
 Route.get('/recover', 'SessionsController.recover')
 
-Route.post('/estudante/cadastro', async ({ view }) => {
-  const tipo = 'estudante'
+Route.get(':tipo/cadastro', async ({ params, view }) => {
+  const tipo = params.tipo
   return view.render('cadastro', { tipo })
-})
+}).where('tipo', 'estudante|empresa')
 
-Route.post('/empresa/cadastro', async ({ view }) => {
-  const tipo = 'empresa'
-  return view.render('cadastro', { tipo })
-})
+Route.post(':tipo/cadastro', 'UsersController.store')
+// Route.post('/estudante/cadastro', 'UsersController.store')
+
+// Route.post('/empresa/cadastro', async ({ view }) => {
+//   const tipo = 'empresa'
+//   return view.render('cadastro', { tipo })
+// })
 
 Route.get('/login', async ({ view }) => {
   return view.render('login')
