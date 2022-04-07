@@ -7,21 +7,13 @@ export default class UsersController {
 
   public async create({}: HttpContextContract) {}
 
-  public async store({ request, view, params }: HttpContextContract) {
-    console.log(request)
+  public async store({ request, view }: HttpContextContract) {
     const input = await request.validate(UserCreateValidator)
-    if (input !== null) {
-      console.log(input.email)
-      console.log(input.password)
-    } else {
-      console.log(params.id)
-    }
-    // const usuario = await User.create({
-    //   tipo: params.tipo,
-    //   email: input.email,
-    //   password: input.password,
-    // })
-    // console.log(usuario)
+    const usuario = await User.create({
+      tipo: input.tipo,
+      email: input.email,
+      password: input.password,
+    })
     return view.render('grupo-1/tela1')
   }
 
