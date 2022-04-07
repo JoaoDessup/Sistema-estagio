@@ -25,9 +25,7 @@ Route.get('/', 'SessionsController.welcome')
 Route.get('/esquecisenha', 'SessionsController.forgetPass')
 
 Route.post('/estudante/esquecisenha', 'SessionsController.recoverPassStudent')
-
 Route.post('/empresa/esquecisenha', 'SessionsController.recoverPassCompany')
-
 Route.get('/recover', 'SessionsController.recover')
 
 Route.get(':tipo/cadastro', async ({ params, view }) => {
