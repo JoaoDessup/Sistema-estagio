@@ -32,7 +32,7 @@ Route.post('/estudante/esquecisenha', 'EstudantesController.recoverPassStudent')
 
 Route.post('/empresa/esquecisenha', 'EmpresasController.recoverPassCompany').as('empresa.recoverPassCompany')
 
-Route.get('/recover', 'SessionsController.recover').as('sessions.recover')
+Route.post('/recover', 'SessionsController.recover').as('sessions.recover')
 
 Route.get(':tipo/cadastro', async ({ params, view }) => {
   const tipo = params.tipo
