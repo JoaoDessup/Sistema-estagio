@@ -20,13 +20,19 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', 'SessionsController.welcome')
+// Rotas com apelido para serem referenciadas no codigo(caso o / mude o apelido sempre será o mesmo :) )
+// Só usar href= "{{ route('APELIDO') }}"
+Route.get('/', 'SessionsController.welcome').as('sessions.welcome')
 
-Route.get('/esquecisenha', 'SessionsController.forgetPass')
+Route.get('/login', 'SessionsController.login').as('sessions.login')
 
-Route.post('/estudante/esquecisenha', 'SessionsController.recoverPassStudent')
-Route.post('/empresa/esquecisenha', 'SessionsController.recoverPassCompany')
-Route.get('/recover', 'SessionsController.recover')
+Route.get('/esquecisenha', 'SessionsController.forgetPass').as('sessions.forgetPass')
+
+Route.post('/estudante/esquecisenha', 'EstudantesController.recoverPassStudent').as('estudantes.recoverPassStudent')
+
+Route.post('/empresa/esquecisenha', 'EmpresasController.recoverPassCompany').as('empresa.recoverPassCompany')
+
+Route.get('/recover', 'SessionsController.recover').as('sessions.recover')
 
 Route.get(':tipo/cadastro', async ({ params, view }) => {
   const tipo = params.tipo
@@ -40,10 +46,6 @@ Route.post(':tipo/cadastro', 'UsersController.store')
 //   const tipo = 'empresa'
 //   return view.render('cadastro', { tipo })
 // })
-
-Route.get('/login', async ({ view }) => {
-  return view.render('login')
-})
 
 Route.get('/teste', async ({ view }) => {
   return view.render('grupo-1/tela1')

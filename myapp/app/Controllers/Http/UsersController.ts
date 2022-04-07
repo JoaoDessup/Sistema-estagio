@@ -3,6 +3,13 @@ import UserCreateValidator from 'App/Validators/UserCreateValidator'
 import User from 'App/Models/User'
 
 export default class UsersController {
+
+//   public async cadastro({ params, view  }: HttpContextContract) {
+//     const tipo = params.tipo
+//   return view.render('cadastro', { tipo })
+// }.where('tipo', 'estudante|empresa')
+
+
   public async index({}: HttpContextContract) {}
 
   public async create({}: HttpContextContract) {}

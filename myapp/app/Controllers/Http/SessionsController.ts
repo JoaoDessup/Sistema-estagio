@@ -9,18 +9,12 @@ export default class SessionsController {
     return view.render('layouts/recuperarSenha/forgetPass')
   }
 
-  public async recoverPassStudent({ view }: HttpContextContract) {
-    const tipo = 'estudante'
-    return view.render('layouts/recuperarSenha/recoverPassStudent', { tipo })
-  }
-
-  public async recoverPassCompany({ view }: HttpContextContract) {
-    const tipo = 'empresa'
-    return view.render('layouts/recuperarSenha/recoverPassCompany', { tipo })
-  }
-
   public async recover({ view }: HttpContextContract) {
     return view.render('layouts/recuperarSenha/telaResposta')
+  }
+
+  public async login({ view }: HttpContextContract) {
+    return view.render('login')
   }
 
   public async index({}: HttpContextContract) {}

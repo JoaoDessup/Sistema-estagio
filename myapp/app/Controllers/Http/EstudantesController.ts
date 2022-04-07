@@ -1,6 +1,12 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 export default class EstudantesController {
+
+  public async recoverPassStudent({ view }: HttpContextContract) {
+    const tipo = 'estudante'
+    return view.render('layouts/recuperarSenha/recoverPassStudent', { tipo })
+  }
+  
   public async index({}: HttpContextContract) {}
 
   public async create({}: HttpContextContract) {}
