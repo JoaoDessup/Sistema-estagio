@@ -16,7 +16,8 @@
         @if(tipo == 'estudante')
         @!form.input({type: "text", name: "nome", placeholder: "Nome Completo"})
         @!form.input({type: "text", name: "matricula", placeholder: "Matrícula"})
-        @!form.input({type: "date", name: "nascimento", placeholder: "Data de Nascimento"})
+        <input type="text" name="nascimento" class="rounded-xl mt-5 p-4 mx-24" placeholder="Data de Nascimento"
+          onfocus="(this.type='date')" onblur="(this.type='text')">
         @else
         @!form.input({type: "text", name: "nome", placeholder: "Nome da Instituição"})
         @!form.input({type: "text", name: "cnpj", placeholder: "CNPJ"})

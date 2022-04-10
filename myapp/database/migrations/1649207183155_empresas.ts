@@ -7,14 +7,8 @@ export default class Empresas extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
       table.string('name').notNullable()
-      table.integer('cnpj').unique().notNullable()
-      table
-        .integer('user_id')
-        .unsigned()
-        .references('user.id')
-        .notNullable()
-        .unique()
-        .onDelete('CASCADE')
+      table.integer('cnpj').unique().notNullable().unsigned()
+      table.integer('user_id').unsigned().references('users.id').unique().onDelete('CASCADE')
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

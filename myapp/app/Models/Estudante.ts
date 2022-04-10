@@ -1,7 +1,14 @@
 import { DateTime } from 'luxon'
 import Vaga from './Vaga'
 import User from './User'
-import { BaseModel, column, hasOne, HasOne, manyToMany, ManyToMany } from '@ioc:Adonis/Lucid/Orm'
+import {
+  BaseModel,
+  BelongsTo,
+  belongsTo,
+  column,
+  manyToMany,
+  ManyToMany,
+} from '@ioc:Adonis/Lucid/Orm'
 
 export default class Estudante extends BaseModel {
   @column({ isPrimary: true })
@@ -17,13 +24,13 @@ export default class Estudante extends BaseModel {
   public nascimento: string
 
   @column()
-  public user_id: number
+  public userId: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
-  @hasOne(() => User)
-  public usuario: HasOne<typeof User>
+  @belongsTo(() => User)
+  public usuario: BelongsTo<typeof User>
 
   @manyToMany(() => Vaga, {
     pivotTable: 'inscricaos',

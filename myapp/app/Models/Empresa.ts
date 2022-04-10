@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
 import User from './User'
 import Vaga from './Vaga'
-import { BaseModel, column, hasOne, HasOne, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, belongsTo, BelongsTo, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
 export default class Empresa extends BaseModel {
   @column({ isPrimary: true })
   public id: number
@@ -13,10 +13,10 @@ export default class Empresa extends BaseModel {
   public cnpj: number
 
   @column()
-  public user_id: number
+  public userId: number
 
-  @hasOne(() => User)
-  public usuario: HasOne<typeof User>
+  @belongsTo(() => User)
+  public usuario: BelongsTo<typeof User>
 
   @hasMany(() => Vaga)
   public vagas: HasMany<typeof Vaga>
