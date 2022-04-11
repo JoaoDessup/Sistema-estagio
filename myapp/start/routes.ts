@@ -26,7 +26,13 @@ Route.get('/', async ({ view }) => {
   return view.render('welcome')
 })
 
-Route.get('/login', 'SessionsController.login').as('sessions.login')
+Route.get('/login', 'SessionsController.create').as('sessions.login')
+Route.post('/login', 'SessionsController.store').as('sessions.create')
+Route.get('/logout', 'SessionsController.destroy')
+Route.post('/logout', 'SessionsController.destroy').as('sessions.destroy')
+Route.get('index/:tipo', 'SessionsController.index')
+  .where('tipo', 'estudante|empresa')
+  .as('sessions.index')
 
 Route.get('/esquecisenha', 'SessionsController.forgetPass').as('sessions.forgetPass')
 
@@ -40,11 +46,9 @@ Route.post('/empresa/esquecisenha', 'EmpresasController.recoverPassCompany').as(
 
 Route.post('/recover', 'SessionsController.recover').as('sessions.recover')
 
-Route.get(':tipo/cadastro', 'UsersController.create')
+Route.get('cadastro/:tipo', 'UsersController.create')
   .where('tipo', 'estudante|empresa')
   .as('users.create')
 
-Route.post('empresa/cadastro', 'EmpresasController.store')
-Route.post('estudante/cadastro', 'EstudantesController.store')
-
-Route.get(':id/teste', 'EmpresasController.index')
+Route.post('empresa/cadastro', 'EmpresasController.store').as('empresa.store')
+Route.post('estudante/cadastro', 'EstudantesController.store').as('estudante.store')

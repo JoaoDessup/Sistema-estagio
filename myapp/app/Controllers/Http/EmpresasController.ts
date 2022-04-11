@@ -9,12 +9,7 @@ export default class EmpresasController {
     return view.render('layouts/recuperarSenha/recoverPassCompany', { tipo })
   }
 
-  public async index({ params, view }: HttpContextContract) {
-    // const users = await Empresa.query().preload('usuario')
-    const empresa = await Empresa.findOrFail(params.id)
-    const user = (await empresa.related('usuario').query())[0].serialize()
-    return view.render('grupo-1/tela1', { empresa, user })
-  }
+  public async index({}: HttpContextContract) {}
 
   public async create({}: HttpContextContract) {}
 

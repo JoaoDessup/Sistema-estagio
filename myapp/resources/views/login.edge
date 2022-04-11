@@ -10,26 +10,35 @@
         <img alt="feature" class="object-cover object-center" src="/images/logo.png">
       </div>
 
-      <div class=" px-8 py-12 justify-center flex flex-wrap items-center w-screen h-full">
-        <div class="bg-white rounded-2xl p-16 flex flex-col">
+      <div class="px-8 py-12 flex justify-center items-center w-screen h-full">
+        <div class="bg-white rounded-2xl p-8 flex flex-col items-center justify-center">
           <h2 class="text-gray-900 text-2xl font-bold title-font mb-5">Login</h2>
-          <div class="relative mb-4">
+          @if(flashMessages.has(`errors.login`))
+          <div class="text-red-600">
+            {{ flashMessages.get(`errors.login`) }}
+          </div>
+          @end
+          <form action="{{ route('sessions.create') }}" method="POST"
+            class="flex flex-wrap items-center justify-center">
+            {{ csrfField() }}
             {{--  <label for="email" class="leading-7 text-lg text-gray-600">E-mail</label>  --}}
-            <input type="email" id="email" name="email" placeholder="E-mail"
-              class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 
-              focus:ring-2 focus:ring-indigo-200 text-lg outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-          </div>
-          <div class="relative mb-4">
+            <input type="email" name="email" placeholder="E-mail" class="mb-4 w-full bg-white rounded border border-gray-300 focus:border-indigo-500 
+                focus:ring-2 focus:ring-indigo-200 text-lg outline-none text-gray-700 py-1 px-3 leading-8 transition-colors
+                duration-200 ease-in-out">
             {{--  <label for="password" class="leading-7 text-lg text-gray-600">Senha</label>  --}}
-            <input type="password" id="password" name="password" placeholder="Senha"
-              class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-lg outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-          </div>
-          <button onclick="window.location='/vagas'"
-            class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-3xl">Entrar</button>
-          <a class="text-lg fontehover hover:text-gray-500 my-3 text-center" href="/esquecisenha">Esqueci a minha senha</a>
+            <input type="password" name="password" placeholder="Senha" class="mb-4 w-full bg-white rounded border border-gray-300 focus:border-indigo-500
+                focus:ring-2 focus:ring-indigo-200 text-lg outline-none text-gray-700 py-1 px-3 leading-8 transition-colors
+                duration-200 ease-in-out">
+
+            <input type="submit" value="Entrar"
+              class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 cursor-pointer rounded text-3xl">
+          </form>
+          <a class="text-lg fontehover hover:text-gray-500 my-3 text-center" href="/esquecisenha">Esqueci a minha
+            senha</a>
           <a class="text-lg fontehover hover:text-gray-500 text-center" href="/">Não possuo cadastro</a>
         </div>
       </div>
 </body>
+
 
 @end

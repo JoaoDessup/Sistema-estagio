@@ -10,9 +10,8 @@
 
     <div class="w-full h-screen md:w-2/3 flex flex-col">
       <p class="fonte2 text-center text-4xl mt-24 mb-16">Cadastre-se:</p>
-      <form action="" method="post" class="flex flex-col">
+      <form action="{{ route(`${tipo}.store`) }}" method="post" class="flex flex-col">
         {{ csrfField() }}
-        <input type="hidden" name="tipo" value={{ tipo }}>
         @if(tipo == 'estudante')
         @!form.input({type: "text", name: "nome", placeholder: "Nome Completo"})
         @!form.input({type: "text", name: "matricula", placeholder: "Matrícula"})
@@ -25,10 +24,9 @@
         @!form.input({type: "email", name: "email", placeholder: "E-mail"})
         @!form.input({type: "password", name: "password", placeholder: "Senha"})
         @!form.input({type: "password", name: "confirm_password", placeholder: "Confirme sua Senha"})
-        <button type="submit"
-          class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 mx-auto px-8">
-          Cadastrar
-        </button>
+        <input type="hidden" name="tipo" value={{ tipo }}>
+        <input type="submit" value="Cadastrar"
+          class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 mx-auto px-8 cursor-pointer">
       </form>
     </div>
   </div>

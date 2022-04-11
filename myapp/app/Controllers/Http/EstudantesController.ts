@@ -21,7 +21,7 @@ export default class EstudantesController {
       name: input.nome,
     })
     await estudante.related('usuario').associate(user)
-    return ctx.response.redirect().toRoute('/login')
+    return ctx.response.redirect().toRoute('sessions.login')
   }
 
   public async show({}: HttpContextContract) {}
