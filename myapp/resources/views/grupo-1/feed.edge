@@ -1,0 +1,25 @@
+@layout('layouts/main')
+
+@section('body')
+
+<body class="fundo h-screen">
+    @!component('components/nav')
+    <p>MINHAS VAGAS</p>
+    @if(vagas.length > 0)
+    @each((vaga, k) in vagas)
+    <div>
+        <p>Vaga {{ k+1 }}: {{ vaga.nome }}</p>
+        <p>Paga R${{vaga.salario}}</p>
+        <p>Area: {{vaga.area}}</p>
+        <p>{{vaga.descricao}}</p>
+    </div>
+    @endeach
+    @else
+    <div>
+        <p>VOCE NAO TEM VAGAS</p>
+    </div>
+    @end
+    <a href="{{ route('vagas.create') }}"> Inserir nova vaga</a>
+</body>
+
+@end

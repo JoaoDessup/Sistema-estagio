@@ -1,0 +1,25 @@
+@layout('layouts/main')
+
+@section('body')
+
+<body class="fundo h-screen">
+    @!component('components/nav')
+    <div class="w-screen h-screen md:w-2/3 flex flex-col">
+        <form action="{{ route('vagas.store') }}" method="post" class="flex flex-col">
+            {{ csrfField() }}
+            @!form.input({type: "text", name: "nome", placeholder: "Nome da vaga"})
+            @!form.input({type: "text", name: "estado", placeholder: "Estado"})
+            @!form.input({type: "text", name: "cidade", placeholder: "Cidade"})
+            @!form.input({type: "text", name: "area", placeholder: "Area"})
+            @!form.input({type: "text", name: "tipo", placeholder: "Tipo"})
+            <input type="number" min="0.00" max="30000.00" step="0.01" name="salario" class="rounded-xl mt-5 p-4 mx-24"
+                placeholder="Salario">
+            <input type="text" name="descricao" class="flex justify-start rounded-xl mt-5 p-52 mx-24"
+                placeholder="Descreva sua vaga">
+            <input type="submit" value="Criar"
+                class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 mx-auto px-8 cursor-pointer">
+        </form>
+    </div>
+</body>
+
+@end

@@ -3,9 +3,9 @@ import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 export default class Inscricaos extends BaseSchema {
   protected tableName = 'inscricaos'
 
-  public async up () {
+  public async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
+      table.increments('id').primary()
       table.integer('estudantes_id').unsigned().references('estudantes.id')
       table.integer('vagas_id').unsigned().references('vagas.id')
       table.unique(['estudantes_id', 'vagas_id'])
@@ -17,7 +17,7 @@ export default class Inscricaos extends BaseSchema {
     })
   }
 
-  public async down () {
+  public async down() {
     this.schema.dropTable(this.tableName)
   }
 }

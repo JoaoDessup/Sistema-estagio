@@ -31,6 +31,7 @@ Route.post('/login', 'SessionsController.store').as('sessions.create')
 Route.get('/logout', 'SessionsController.destroy')
 Route.post('/logout', 'SessionsController.destroy').as('sessions.destroy')
 Route.get('index/:tipo', 'SessionsController.index')
+  .middleware('auth:web')
   .where('tipo', 'estudante|empresa')
   .as('sessions.index')
 
@@ -52,3 +53,7 @@ Route.get('cadastro/:tipo', 'UsersController.create')
 
 Route.post('empresa/cadastro', 'EmpresasController.store').as('empresa.store')
 Route.post('estudante/cadastro', 'EstudantesController.store').as('estudante.store')
+
+Route.get('/vagas', 'VagasController.index').middleware('auth:web').as('vagas.index')
+Route.get('/criar_vaga', 'VagasController.create').middleware('auth:web').as('vagas.create')
+Route.post('criar_vaga', 'VagasController.store').middleware('auth:web').as('vagas.store')

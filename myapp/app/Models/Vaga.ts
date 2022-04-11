@@ -36,7 +36,7 @@ export default class Vaga extends BaseModel {
   public descricao: string
 
   @column()
-  public empresa_id: number
+  public empresaId: number
 
   @belongsTo(() => Empresa)
   public empresa: BelongsTo<typeof Empresa>

@@ -15,12 +15,12 @@ export default class SessionsController {
 
   public async login({}: HttpContextContract) {}
 
-  public async index({ view, auth }: HttpContextContract) {
+  public async index({ view, response, auth }: HttpContextContract) {
     const user = auth.user
     if (user?.tipo === 'estudante') {
-      return view.render('grupo-1/tela1', { user })
+      return view.render('grupo-2/feed', { user })
     } else {
-      return view.render('grupo-1/tela1', { user })
+      return response.redirect().toRoute('vagas.index')
     }
   }
 
@@ -33,11 +33,8 @@ export default class SessionsController {
     const password = request.input('password')
     try {
       await auth.use('web').attempt(email, password)
-      console.log('teste')
       return response.redirect().toRoute('sessions.index', { tipo: auth.user?.tipo })
     } catch (error) {
-      console.log('deu merda')
-      console.log(error)
       session.flashExcept(['login'])
       session.flash({ errors: { login: 'Credenciais não encontradas ou inexistentes' } })
       return response.redirect().toRoute('sessions.login')

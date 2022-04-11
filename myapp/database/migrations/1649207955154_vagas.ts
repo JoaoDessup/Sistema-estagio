@@ -5,7 +5,7 @@ export default class Vagas extends BaseSchema {
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
+      table.increments('id').primary()
       table.string('nome').notNullable()
       table.string('estado').notNullable()
       table.string('cidade').notNullable()
@@ -13,13 +13,7 @@ export default class Vagas extends BaseSchema {
       table.string('tipo').notNullable()
       table.float('salario').notNullable()
       table.string('descricao').notNullable()
-      table
-        .integer('empresas_id')
-        .unsigned()
-        .references('empresas.id')
-        .notNullable()
-        .unique()
-        .onDelete('CASCADE')
+      table.integer('empresa_id').unsigned().references('empresas.id').onDelete('CASCADE')
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
