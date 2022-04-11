@@ -4,22 +4,36 @@
 
 <body class="fundo h-screen">
     @!component('components/nav')
-    <p>MINHAS VAGAS</p>
-    @if(vagas.length > 0)
-    @each((vaga, k) in vagas)
-    <div>
-        <p>Vaga {{ k+1 }}: {{ vaga.nome }}</p>
-        <p>Paga R${{vaga.salario}}</p>
-        <p>Area: {{vaga.area}}</p>
-        <p>{{vaga.descricao}}</p>
-    </div>
-    @endeach
-    @else
-    <div>
-        <p>VOCE NAO TEM VAGAS</p>
-    </div>
-    @end
-    <a href="{{ route('vagas.create') }}"> Inserir nova vaga</a>
+    <h1 class="ml-10 my-10 font-sans font-medium text-2xl">MINHAS VAGAS</h1>
+    <section class="text-gray-600 body-font overflow-hidden">
+        @if(vagas.length > 0)
+        @each((vaga, k) in vagas)
+        <div class="container px-2 py-10  mx-auto">
+            <div class="-my-8 divide-y-2 divide-gray-100">
+            <div class="py-8 flex flex-wrap md:flex-nowrap">
+                <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+                <span class="font-semibold title-font text-gray-700"> {{ vaga.tipo }}</span>
+                <span class="mt-1 text-gray-500 text-sm">{{ `${vaga.estado} - ${vaga.cidade}` }}</span>
+                </div>
+                <div class="md:flex-grow">
+                <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">{{ vaga.nome }}</h2>
+                <p class="leading-relaxed">
+                    {{ vaga.descricao }}
+                </p>
+                @!component('components/learn_more', {text: 'Saiba mais', rota: route('vagas.show', {id: k+1})})
+                </div>
+            </div>
+            </div>
+        </div>
+        @endeach
+        @else
+            <div class="flex justify-center items-center text-2xl font-medium text-gray-900 title-font mb-10">Você não possui vagas cadastradas</div>
+        @end
+        </section>
+    <a href="{{ route('vagas.create') }}"
+    class="mx-32 fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 px-8 cursor-pointer">
+     Inserir nova vaga
+    </a>
 </body>
 
 @end
