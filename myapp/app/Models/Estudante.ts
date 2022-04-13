@@ -21,7 +21,7 @@ export default class Estudante extends BaseModel {
   public matricula: number
 
   @column()
-  public nascimento: string
+  public nascimento: DateTime
 
   @column()
   public userId: number

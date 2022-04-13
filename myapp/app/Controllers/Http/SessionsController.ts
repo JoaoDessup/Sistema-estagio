@@ -18,7 +18,8 @@ export default class SessionsController {
   public async index({ view, response, auth }: HttpContextContract) {
     const user = auth.user
     if (user?.tipo === 'estudante') {
-      return view.render('grupo-2/feed', { user })
+      return response.redirect().toRoute('vagas.listAll')
+      // return view.render('grupo-2/feed', { user })
     } else {
       return response.redirect().toRoute('vagas.index')
     }

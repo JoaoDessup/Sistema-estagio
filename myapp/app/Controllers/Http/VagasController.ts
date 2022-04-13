@@ -53,6 +53,17 @@ export default class VagasController {
 
   public async edit({}: HttpContextContract) {}
 
+  public async listOne({params, view}: HttpContextContract) {
+    const vagas = await Vaga.all()
+    const vaga = vagas[params.id - 1]
+    return view.render('grupo-2/vaga', {vaga})
+  }
+
+  public async listAll({view}: HttpContextContract) {
+    const vagas = await Vaga.all()
+    return view.render('grupo-2/feed', { vagas })
+  }
+
   public async update({}: HttpContextContract) {}
 
   public async destroy({ params, response }: HttpContextContract) {

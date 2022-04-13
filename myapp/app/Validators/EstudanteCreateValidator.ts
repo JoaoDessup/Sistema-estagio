@@ -26,7 +26,7 @@ export default class EstudanteCreateValidator {
   public schema = schema.create({
     nome: schema.string(),
     matricula: schema.number([rules.unique({ table: 'estudantes', column: 'matricula' })]),
-    nascimento: schema.date(),
+    nascimento: schema.date(), 
   })
 
   /**

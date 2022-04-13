@@ -1,0 +1,41 @@
+@layout('layouts/main')
+
+@section('body')
+
+</head>
+
+<body class="fundo h-screen">
+
+    @!component('components/nav')
+
+    <div class="h-screen fundo">
+        <div class="h-full flex flex-col bg-gray-800 mx-60 my-14 rounded-lg">
+            <div class="flex flex-col items-center justify-center mt-10 mx-auto">
+                <p class="fonte mt-4 mb-4 text-4xl">{{ estudante.name }}</p>
+            </div>
+            <div class="fundo rounded-lg mt-10 mx-20 ring ring-offset-2 ring-gray-600">
+                {{--  <p class="mt-4 flex items-center justify-center font-bold text-xl">Descrição</p>
+                <p class="mt-4 mb-4 flex flex-wrap items-center justify-center text-md mx-40">Estudande de Ciência da Computação, 
+                cursando o 6º período, em busca da minha primeira oportunidade profissional</p>  --}}
+                <p class="mt-4 mb-4 ml-4 text-xl font-bold">Dados pessoais:</p>
+                <p class="mt-4 mb-4 ml-4"><b>Email:</b> {{ user.email }}</p>
+                <p class="mt-4 mb-4 ml-4"><b>Número de contato:</b></p>
+                <p class="mt-4 mb-4 ml-4"><b>Data:</b> 22/05/2002</p>
+                <p class="mt-4 mb-4 ml-4"><b>Estado Civil:</b></p>
+                <p class="mt-8 mb-4 ml-4 text-xl font-bold">Dados profissionais:</p>
+                <p class="mt-4 mb-4 ml-4"><b>Tipo:</b> {{user.tipo}}</p>
+                <p class="mt-4 mb-4 ml-4"><b>Universidade:</b></p>
+                <p class="mt-4 mb-4 ml-4"><b>Curso:</b></p>
+                <p class="mt-4 mb-4 ml-4"><b>Período:</b></p>
+                <p class="mt-4 mb-4 ml-4"><b>Objetivo profissional:</b></p>
+                <p class="mt-4 mb-4 ml-4"><b>Área de Interesse:</b></p>
+            </div>
+            <button type="submit"
+            class="fundo2 fonte text-lg hover:bg-gray-400 rounded-xl cursor-pointer mt-10 p-2 mx-auto px-4">
+            Editar Perfil
+            </button>
+        </div>
+    </div>
+    
+</body>
+@end

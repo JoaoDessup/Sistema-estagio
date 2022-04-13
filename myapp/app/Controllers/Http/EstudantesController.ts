@@ -17,14 +17,18 @@ export default class EstudantesController {
     const input = await ctx.request.validate(EstudanteCreateValidator)
     const estudante = await Estudante.create({
       matricula: Number(input.matricula),
-      nascimento: input.nascimento.toString(),
+      nascimento: input.nascimento,
       name: input.nome,
     })
     await estudante.related('usuario').associate(user)
     return ctx.response.redirect().toRoute('sessions.login')
   }
 
-  public async show({}: HttpContextContract) {}
+  public async show({auth, view}: HttpContextContract) {
+      const estudante = await Estudante.findByOrFail('user_id', auth.user?.id)
+      const user = auth.user
+      return view.render('perfil', {estudante,user})  
+  }
 
   public async edit({}: HttpContextContract) {}
 

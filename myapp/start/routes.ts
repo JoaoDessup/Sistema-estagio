@@ -26,6 +26,7 @@ Route.get('/', async ({ view }) => {
   return view.render('welcome')
 })
 
+
 Route.get('/login', 'SessionsController.create').as('sessions.login')
 Route.post('/login', 'SessionsController.store').as('sessions.create')
 Route.get('/logout', 'SessionsController.destroy')
@@ -34,35 +35,44 @@ Route.get('index/:tipo', 'SessionsController.index')
   .middleware('auth:web')
   .where('tipo', 'estudante|empresa')
   .as('sessions.index')
-
-Route.get('/esquecisenha', 'SessionsController.forgetPass').as('sessions.forgetPass')
-
-Route.post('/estudante/esquecisenha', 'EstudantesController.recoverPassStudent').as(
-  'estudantes.recoverPassStudent'
+  
+  Route.get('/esquecisenha', 'SessionsController.forgetPass').as('sessions.forgetPass')
+  
+  Route.post('/estudante/esquecisenha', 'EstudantesController.recoverPassStudent').as(
+    'estudantes.recoverPassStudent'
 )
 
 Route.post('/empresa/esquecisenha', 'EmpresasController.recoverPassCompany').as(
   'empresa.recoverPassCompany'
-)
-
-Route.post('/recover', 'SessionsController.recover').as('sessions.recover')
-
-Route.get('cadastro/:tipo', 'UsersController.create')
+  )
+  
+  Route.post('/recover', 'SessionsController.recover').as('sessions.recover')
+  
+  Route.get('cadastro/:tipo', 'UsersController.create')
   .where('tipo', 'estudante|empresa')
   .as('users.create')
-
-Route.post('empresa/cadastro', 'EmpresasController.store').as('empresa.store')
-Route.post('estudante/cadastro', 'EstudantesController.store').as('estudante.store')
-
-Route.get('/vagas', 'VagasController.index').middleware('auth:web').as('vagas.index')
-Route.get(':id/vagas', 'VagasController.show')
+  
+  Route.post('empresa/cadastro', 'EmpresasController.store').as('empresa.store')
+  Route.post('estudante/cadastro', 'EstudantesController.store').as('estudante.store')
+  
+  Route.get('/vagas', 'VagasController.index').middleware('auth:web').as('vagas.index')
+  Route.get(':id/vagas', 'VagasController.show')
   .middleware('auth:web')
   .where('id', /^[0-9]$/)
   .as('vagas.show')
-Route.get('/criar_vaga', 'VagasController.create').middleware('auth:web').as('vagas.create')
-Route.post('criar_vaga', 'VagasController.store').middleware('auth:web').as('vagas.store')
-Route.post('/vagas/destroy/:id', 'VagasController.destroy')
+  Route.get('/criar_vaga', 'VagasController.create').middleware('auth:web').as('vagas.create')
+  Route.post('criar_vaga', 'VagasController.store').middleware('auth:web').as('vagas.store')
+  Route.post('/vagas/destroy/:id', 'VagasController.destroy')
   .middleware('auth:web')
   .where('id', /^[0-9]$/)
   .as('vagas.destroy')
+  
+  Route.get('/perfil', 'EstudantesController.show')
 
+  Route.get('/estudante/vagas', 'VagasController.listAll').as('vagas.listAll')
+
+  Route.get('estudante/:id/vagas/', 'VagasController.listOne')
+  .middleware('auth:web')
+  .where('id', /^[0-9]$/)
+  .as('vagas.listOne')
+  
