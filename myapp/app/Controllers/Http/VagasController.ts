@@ -1,5 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Empresa from 'App/Models/Empresa'
+import Estudante from 'App/Models/Estudante'
 import Vaga from 'App/Models/Vaga'
 
 export default class VagasController {
@@ -12,6 +13,15 @@ export default class VagasController {
 
   public async create({ view }: HttpContextContract) {
     return view.render('grupo-1/vaga_create')
+  }
+
+  public async assign({ auth, request }: HttpContextContract) {
+    //COLOCA UM ESTUDANTE NA VAGA
+    const estudante = await Estudante.findByOrFail('user_id', auth.user?.id)
+    const vagaID = request.input('vaga_id')
+    const vaga = await Vaga.findOrFail(vagaID)
+    vaga.related('estudantesInscritos').attach([estudante.id])
+    return { id: vagaID, inscrito: true }
   }
 
   public async store({ auth, request, response }: HttpContextContract) {
