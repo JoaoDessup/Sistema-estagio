@@ -9,7 +9,7 @@
     @!component('components/nav')
 
     {{--  Vagas em Destaque  --}}
-    
+
     {{--  <div class="mt-14 flex justify-center bg-gray-800 rounded-lg ring ring-offset-2 ring-gray-600 mx-36 py-10">
         <a href="#">
         <div class="max-w-sm rounded overflow-hidden shadow-2xl fundo pt-12 mx-10 ring ring-offset-2 ring-gray-500">
@@ -51,7 +51,8 @@
 
     {{--  Pesquisa de Vagas  --}}
 
-    <div class="container mx-auto flex justify-center items-center mt-14 p-4 bg-gray-800 rounded-lg ring ring-offset-2 ring-gray-600 flex flex-wrap">
+    <div
+        class="container mx-auto flex justify-center items-center mt-14 p-4 bg-gray-800 rounded-lg ring ring-offset-2 ring-gray-600 flex flex-wrap">
         <input type="search" placeholder="Qual o seu Estado?" list="estados" class="fundo rounded-lg p-2 my-0.5">
         <datalist id="estados">
             <option value="Rio de Janeiro"></option>
@@ -80,7 +81,8 @@
             <option value="Senior"></option>
         </datalist>
         <div class="fundo rounded border-2 border-blue-300 flex items-center w-1/3 ml-28 my-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             <input type="text" placeholder="Pesquise..." class="ml-4 bg-transparent w-full ">
@@ -93,13 +95,14 @@
     <div class="container mx-auto p-4 mt-10 bg-gray-800 rounded-lg">
         <div class="mx-6 p-4 mb-4 bg-gray-800 rounded-lg ring ring-offset-2 ring-gray-600 flex flex-wrap">
             <div class="flex items-center flex-col mx-auto">
-            <p class="bg-gray-200 rounded-lg p-2 px-10 font-gray-800 font-bold ring ring-inset text-xl">{{vaga.nome}}</p>
-            <p class="fonte text-lg mt-8">Descrição:</p>
-            <p class="fonte mt-4 mx-10">{{vaga.descricao}}</p>
-            <a href="{{ route('vagas.listOne', {id: k+1}) }}"
-            class="mx-auto fundo2 fonte text-lg hover:bg-gray-400 rounded-xl cursor-pointer mt-10 p-2 px-4 cursor-pointer">
-            Visualizar Vaga
-            </a>
+                <p class="bg-gray-200 rounded-lg p-2 px-10 font-gray-800 font-bold ring ring-inset text-xl">
+                    {{vaga.nome}}</p>
+                <p class="fonte text-lg mt-8">Descrição:</p>
+                <p class="fonte mt-4 mx-10">{{vaga.descricao}}</p>
+                <a href="{{ route('vagas.show', {id: k+1}) }}"
+                    class="mx-auto fundo2 fonte text-lg hover:bg-gray-400 rounded-xl cursor-pointer mt-10 p-2 px-4 cursor-pointer">
+                    Visualizar Vaga
+                </a>
             </div>
         </div>
     </div>

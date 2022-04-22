@@ -11,10 +11,16 @@
             @!form.input({type: "text", name: "estado", placeholder: "Estado"})
             @!form.input({type: "text", name: "cidade", placeholder: "Cidade"})
             @!form.input({type: "text", name: "area", placeholder: "Area"})
-            @!form.input({type: "text", name: "tipo", placeholder: "Tipo"})
+            <select name="tipo" class="rounded-xl mt-5 p-4 mx-24">
+                <option value="" disabled selected>Selecione o tipo</option>
+                <option value="Emprego" class="text-slate-500">Emprego</option>
+                <option value="Estágio">Estágio</option>
+            </select>
+            {{--  @!form.input({type: "text", name: "tipo", placeholder: "Tipo"})  --}}
             <input type="number" min="0.00" max="30000.00" step="0.01" name="salario" class="rounded-xl mt-5 p-4 mx-24"
                 placeholder="Salario">
-            <textarea type="text" name="descricao" class="flex justify-start h-fit rounded-xl mt-5 py-5 px-5 resize-none mx-24"
+            <textarea type="text" name="descricao"
+                class="flex justify-start h-fit rounded-xl mt-5 py-5 px-5 resize-none mx-24"
                 placeholder="Descreva sua vaga"></textarea>
             <input type="submit" value="Criar"
                 class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 mx-auto px-8 cursor-pointer">
