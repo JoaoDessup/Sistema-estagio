@@ -87,13 +87,11 @@ export default class VagasController {
       const estudante = await Estudante.findByOrFail('user_id', auth.user?.id)
       vagas = await Vaga.all()
       vaga = vagas[params.id - 1]
-      const inscritos = await vaga.related('estudantesInscritos').query()
-      for (const i in inscritos) {
-        if (inscritos[i].id === estudante.id) {
-          inscrito = true
-          break
-        }
-      }
+      const estudanteInscrito = await vaga
+        .related('estudantesInscritos')
+        .query()
+        .where('estudante_id', estudante.id)
+      inscrito = estudanteInscrito[0]?.id === estudante.id
     }
     index = vagas.indexOf(vaga) + 1
     return view.render('vaga', { vaga, index, tipo, inscrito })
