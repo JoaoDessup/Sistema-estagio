@@ -20,15 +20,16 @@ export default class VagasController {
     return view.render('grupo-1/vaga_create')
   }
 
-  public async list({ view, request }: HttpContextContract) {
-    const vagaID = request.input('vaga_id')
-    const vaga = await Vaga.findOrFail(vagaID)
+  public async list({ view, request, params }: HttpContextContract) {
+    const index = params.id
+    const vaga = await Vaga.findOrFail(index)
     const inscritos = await vaga.related('estudantesInscritos').query()
-    return view.render('grupo-1/inscritos', { inscritos })
+    const bloqueados = await vaga.related('estudantesBloqueados').query()
+    return view.render('grupo-1/inscritos', { inscritos, bloqueados, vaga, index })
   }
 
   public async associate({ auth, request, response }: HttpContextContract) {
-    //COLOCA UM ESTUDANTE NA VAGA
+    //ESTUDANTE ENTRA NA VAGA
     const id = request.input('id')
     const estudante = await Estudante.findByOrFail('user_id', auth.user?.id)
     const vagaID = Number(request.input('vaga_id'))
@@ -38,13 +39,37 @@ export default class VagasController {
   }
 
   public async dissociate({ auth, request, response }: HttpContextContract) {
-    //COLOCA UM ESTUDANTE NA VAGA
+    //ESTUDANTE SAI DA VAGA
     const id = request.input('id')
     const estudante = await Estudante.findByOrFail('user_id', auth.user?.id)
     const vagaID = Number(request.input('vaga_id'))
     const vaga = await Vaga.findOrFail(vagaID)
     vaga.related('estudantesInscritos').detach([estudante.id])
     return response.redirect().toRoute('vagas.show', { id: id })
+  }
+
+  public async remove({ request, response, params }: HttpContextContract) {
+    //EMPRESA REMOVE UM ESTUDANTE DA VAGA
+    const id = params.id
+    const estudanteID = request.input('estudanteID')
+    const estudante = await Estudante.findOrFail(estudanteID)
+    const vagaID = Number(request.input('vagaID'))
+    const vaga = await Vaga.findOrFail(vagaID)
+    vaga.related('estudantesBloqueados').attach([estudante.id])
+    vaga.related('estudantesInscritos').detach([estudante.id])
+    return response.redirect().toRoute('vagas.inscritos', { id: id })
+  }
+
+  public async replace({ request, response, params }: HttpContextContract) {
+    //EMPRESA REMOVE UM ESTUDANTE DA VAGA
+    const id = params.id
+    const estudanteID = request.input('estudanteID')
+    const estudante = await Estudante.findOrFail(estudanteID)
+    const vagaID = Number(request.input('vagaID'))
+    const vaga = await Vaga.findOrFail(vagaID)
+    vaga.related('estudantesBloqueados').detach([estudante.id])
+    vaga.related('estudantesInscritos').attach([estudante.id])
+    return response.redirect().toRoute('vagas.inscritos', { id: id })
   }
 
   public async store({ auth, request, response }: HttpContextContract) {
@@ -71,6 +96,7 @@ export default class VagasController {
 
   public async show({ auth, view, params }: HttpContextContract) {
     let inscrito = false
+    let bloqueado = false
     let vagas: Vaga[]
     let vaga: Vaga
     let index = 1
@@ -87,14 +113,21 @@ export default class VagasController {
       const estudante = await Estudante.findByOrFail('user_id', auth.user?.id)
       vagas = await Vaga.all()
       vaga = vagas[params.id - 1]
-      const estudanteInscrito = await vaga
-        .related('estudantesInscritos')
+      const estudanteBloqueado = await vaga
+        .related('estudantesBloqueados')
         .query()
         .where('estudante_id', estudante.id)
-      inscrito = estudanteInscrito[0]?.id === estudante.id
+      bloqueado = estudanteBloqueado[0]?.id === estudante.id
+      if (!bloqueado) {
+        const estudanteInscrito = await vaga
+          .related('estudantesInscritos')
+          .query()
+          .where('estudante_id', estudante.id)
+        inscrito = estudanteInscrito[0]?.id === estudante.id
+      }
     }
     index = vagas.indexOf(vaga) + 1
-    return view.render('vaga', { vaga, index, tipo, inscrito })
+    return view.render('vaga', { vaga, index, tipo, inscrito, bloqueado })
   }
 
   public async edit({}: HttpContextContract) {}

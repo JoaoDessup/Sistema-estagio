@@ -5,9 +5,31 @@
 <body class="fundo h-screen">
     @!component('components/nav')
     <h1 class="ml-10 my-10 font-sans font-medium text-2xl">INSCRITOS</h1>
+    @if(inscritos.length > 0)
     @each(inscrito in inscritos)
     <p>{{ inscrito.name }}</p>
+    <form action="{{ route('vagas.remove', { id: index }) }}" method="post">
+        {{ csrfField() }}
+        <input type="hidden" name="estudanteID" value={{ inscrito.id }}>
+        <input type="hidden" name="vagaID" value={{ vaga.id }}>
+        <input type="submit" value="Remover">
+    </form>
     @end
+    @else
+    <p>Não há inscritos nessa vaga</p>
+    @endif
+    @if(bloqueados.length > 0)
+    <h1 class="ml-10 my-10 font-sans font-medium text-2xl">BLOQUEADOS</h1>
+    @each(bloqueado in bloqueados)
+    <p>{{ bloqueado.name }}</p>
+    <form action="{{ route('vagas.replace', { id: index }) }}" method="post">
+        {{ csrfField() }}
+        <input type="hidden" name="estudanteID" value={{ bloqueado.id }}>
+        <input type="hidden" name="vagaID" value={{ vaga.id }}>
+        <input type="submit" value="Reinserir">
+    </form>
+    @end
+    @endif
 
 </body>
 

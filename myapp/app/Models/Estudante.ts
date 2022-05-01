@@ -37,6 +37,11 @@ export default class Estudante extends BaseModel {
   })
   public vagasEstudante: ManyToMany<typeof Vaga>
 
+  @manyToMany(() => Vaga, {
+    pivotTable: 'blacklists',
+  })
+  public vagasBloqueadas: ManyToMany<typeof Vaga>
+
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 }

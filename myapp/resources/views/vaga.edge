@@ -53,15 +53,24 @@
             </form>
         </div>
         <div class="flex items-center justify-center">
-            <form action="{{ route('vagas.inscritos') }}" method="get">
-                <input type="hidden" name="vaga_id" value={{vaga.id}}>
+            <form action="{{ route('vagas.inscritos', {id: index}) }}" method="get">
                 <input type="submit" value="Ver Inscritos"
                     class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer my-5 p-4 mx-auto px-8 cursor-pointer">
             </form>
         </div>
         @else
         <div class="flex items-center justify-center">
-            @if(inscrito)
+            @if(bloqueado)
+            <div class=" my-5 p-4 mx-auto px-8 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600" viewBox="0 0 20 20"
+                    fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M13.477 14.89A6 6 0 015.11 6.524l8.367 8.368zm1.414-1.414L6.524 5.11a6 6 0 018.367 8.367zM18 10a8 8 0 11-16 0 8 8 0 0116 0z"
+                        clip-rule="evenodd" />
+                </svg>
+                <p class="text-red-600 mx-2">Você não está elegível para essa vaga</p>
+            </div>
+            @elseif(inscrito)
             <form action="{{ route('vagas.dissociate') }}" method="POST">
                 {{ csrfField() }}
                 <input type="hidden" name="id" value="{{ index }}">
