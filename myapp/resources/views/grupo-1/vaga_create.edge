@@ -4,24 +4,60 @@
 
 <body class="fundo h-screen">
     @!component('components/nav')
-    <div class="w-screen h-screen md:w-2/3 flex flex-col">
+    <div class="container px-5 py-12 mx-auto flex flex-col">
+        <p class="fonte3 font-bold text-3xl mt-9 mb-6 mx-0">Nova vaga: </p>
         <form action="{{ route('vagas.store') }}" method="post" class="flex flex-col">
             {{ csrfField() }}
-            @!form.input({type: "text", name: "nome", placeholder: "Nome da vaga"})
-            @!form.input({type: "text", name: "estado", placeholder: "Estado"})
-            @!form.input({type: "text", name: "cidade", placeholder: "Cidade"})
-            @!form.input({type: "text", name: "area", placeholder: "Area"})
-            <select name="tipo" class="rounded-xl mt-5 p-4 mx-24">
-                <option value="" disabled selected>Selecione o tipo</option>
-                <option value="Emprego" class="text-slate-500">Emprego</option>
-                <option value="Estágio">Estágio</option>
-            </select>
+            <div>
+                <label for="nome" class="block text-gray-700 text-xs font-bold -mb-3 mt-3">
+                    Nome da vaga
+                </label>
+                @!form.input({type: "text", name: "nome", placeholder: "Nome da vaga"})
+            </div>
+            <div>
+                <label for="estado" class="block text-gray-700 text-xs font-bold -mb-3 mt-3">
+                    Estado
+                </label>
+                @!form.input({type: "text", name: "estado", placeholder: "Estado"})
+            </div>
+            <div>
+                <label for="cidade" class="block text-gray-700 text-xs font-bold -mb-3 mt-3">
+                    Cidade
+                </label>
+                @!form.input({type: "text", name: "cidade", placeholder: "Cidade"})
+            </div>
+            <div>
+                <label for="area" class="block text-gray-700 text-xs font-bold -mb-3 mt-3">
+                    Área
+                </label>
+                @!form.input({type: "text", name: "area", placeholder: "Área"})
+            </div>
+            <div>
+                <label for="tipo" class="block text-gray-700 text-xs font-bold -mb-3 mt-3">
+                    Tipo
+                </label>
+                <select name="tipo" class="rounded-xl mt-5 p-4 w-full">
+                    <option value="" disabled selected>Selecione o tipo</option>
+                    <option value="Emprego" class="text-slate-500">Emprego</option>
+                    <option value="Estágio">Estágio</option>
+                </select>
+            </div>
             {{--  @!form.input({type: "text", name: "tipo", placeholder: "Tipo"})  --}}
-            <input type="number" min="0.00" max="30000.00" step="0.01" name="salario" class="rounded-xl mt-5 p-4 mx-24"
-                placeholder="Salario">
-            <textarea type="text" name="descricao"
-                class="flex justify-start h-fit rounded-xl mt-5 py-5 px-5 resize-none mx-24"
-                placeholder="Descreva sua vaga"></textarea>
+            <div>
+                <label for="salario" class="block text-gray-700 text-xs font-bold -mb-3 mt-3">
+                    Salário
+                </label>
+                <input type="number" min="0.00" max="30000.00" step="0.01" name="salario"
+                    class="rounded-xl mt-5 p-4 w-full" placeholder="Salário">
+            </div>
+            <div>
+                <label for="descricao" class="block text-gray-700 text-xs font-bold -mb-3 mt-3">
+                    Descreva sua vaga
+                </label>
+                <textarea type="text" name="descricao"
+                    class="flex justify-start h-fit rounded-xl mt-5 py-5 px-5 resize-none w-full"
+                    placeholder="Descreva sua vaga"></textarea>
+            </div>
             <input type="submit" value="Criar"
                 class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 mx-auto px-8 cursor-pointer">
         </form>

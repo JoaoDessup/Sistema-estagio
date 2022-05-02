@@ -1,6 +1,7 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Empresa from 'App/Models/Empresa'
 import Estudante from 'App/Models/Estudante'
+import Inscricao from 'App/Models/Inscricao'
 import Vaga from 'App/Models/Vaga'
 
 export default class VagasController {
@@ -24,8 +25,16 @@ export default class VagasController {
     const index = params.id
     const vaga = await Vaga.findOrFail(index)
     const inscritos = await vaga.related('estudantesInscritos').query()
+    const vec: any = []
     const bloqueados = await vaga.related('estudantesBloqueados').query()
-    return view.render('grupo-1/inscritos', { inscritos, bloqueados, vaga, index })
+    const inscricoes = await Inscricao.query().where('vaga_id', vaga.id)
+    for (const inscrito of inscritos) {
+      for (const inscricao of inscricoes)
+        if (inscricao.estudante_id === inscrito.id) {
+          vec.push([inscricao.pontuacao, inscrito])
+        }
+    }
+    return view.render('grupo-1/inscritos', { inscritos, bloqueados, vaga, index, vec })
   }
 
   public async associate({ auth, request, response }: HttpContextContract) {
@@ -100,6 +109,7 @@ export default class VagasController {
     let vagas: Vaga[]
     let vaga: Vaga
     let index = 1
+    let pontuacao: any = null
     const tipo = auth.user?.tipo
     if (auth.user?.tipo === 'empresa') {
       const empresa = await Empresa.findByOrFail('user_id', auth.user?.id)
@@ -124,10 +134,16 @@ export default class VagasController {
           .query()
           .where('estudante_id', estudante.id)
         inscrito = estudanteInscrito[0]?.id === estudante.id
+        if (inscrito) {
+          const inscricao = await Inscricao.query()
+            .where('estudante_id', estudante.id)
+            .where('vaga_id', vaga.id)
+          pontuacao = inscricao[0].pontuacao
+        }
       }
     }
     index = vagas.indexOf(vaga) + 1
-    return view.render('vaga', { vaga, index, tipo, inscrito, bloqueado })
+    return view.render('vaga', { vaga, index, tipo, inscrito, bloqueado, pontuacao })
   }
 
   public async edit({}: HttpContextContract) {}

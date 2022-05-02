@@ -4,29 +4,69 @@
 
 </head>
 
-<body class="fundo h-screen">
+<body class="fundo h-full">
   <div class="w-full flex flex-wrap ">
     @!component('components/log', { tipo })
 
-    <div class="w-full h-screen md:w-2/3 flex flex-col">
-      <p class="fonte2 text-center text-4xl mt-24 mb-16">Cadastre-se:</p>
-      <form action="{{ route(`${tipo}.store`) }}" method="post" class="flex flex-col">
+    <div class="w-full h-screen md:w-2/4 mx-auto">
+      <p class="fonte2 text-center text-3xl mt-9 mb-6">Cadastre-se:</p>
+      <form action="{{ route(`${tipo}.store`) }}" method="post" class="flex flex-col items-center">
         {{ csrfField() }}
         @if(tipo == 'estudante')
-        @!form.input({type: "text", name: "nome", placeholder: "Nome Completo"})
-        @!form.input({type: "text", name: "matricula", placeholder: "Matrícula"})
-        <input type="text" name="nascimento" class="rounded-xl mt-5 p-4 mx-24" placeholder="Data de Nascimento"
-          onfocus="(this.type='date')" onblur="(this.type='text')">
+        <div class="md:w-full">
+          <label class="block text-gray-700 text-xs font-bold -mb-3 mt-3" for="nome">
+            Nome completo
+          </label>
+          @!form.input({type: "text", name: "nome", placeholder: "Nome Completo"})
+        </div>
+        <div class="md:w-full">
+          <label class="block text-gray-700 text-xs font-bold -mb-3 mt-3 " for="matricula">
+            Matrícula
+          </label>
+          @!form.input({type: "text", name: "matricula", placeholder: "Matrícula"})
+        </div>
+        <div class="md:w-full">
+          <label class="block text-gray-700 text-xs font-bold -mb-3 mt-3" for="nascimento">
+            Data de nascimento
+          </label>
+          <input type="text" name="nascimento" class="rounded-xl mt-5 p-4 w-full" placeholder="Data de Nascimento"
+            onfocus="(this.type='date')" onblur="(this.type='text')">
+        </div>
         @else
-        @!form.input({type: "text", name: "nome", placeholder: "Nome da Instituição"})
-        @!form.input({type: "text", name: "cnpj", placeholder: "CNPJ"})
+        <div class="md:w-full">
+          <label class="block text-gray-700 text-xs font-bold -mb-3 mt-3" for="nome">
+            Nome da Inatituição
+          </label>
+          @!form.input({type: "text", name: "nome", placeholder: "Nome da Instituição"})
+        </div>
+        <div class="md:w-full">
+          <label class="block text-gray-700 text-xs font-bold -mb-3 mt-3" for="cnpj">
+            CNPJ
+          </label>
+          @!form.input({type: "text", name: "cnpj", placeholder: "CNPJ"})
+        </div>
         @endif
-        @!form.input({type: "email", name: "email", placeholder: "E-mail"})
-        @!form.input({type: "password", name: "password", placeholder: "Senha"})
-        @!form.input({type: "password", name: "confirm_password", placeholder: "Confirme sua Senha"})
+        <div class="md:w-full">
+          <label class="block text-gray-700 text-xs font-bold -mb-3 mt-3" for="email">
+            E-mail
+          </label>
+          @!form.input({type: "email", name: "email", placeholder: "E-mail"})
+        </div>
+        <div class="md:w-full">
+          <label class="block text-gray-700 text-xs font-bold -mb-3 mt-3" for="password">
+            Senha
+          </label>
+          @!form.input({type: "password", name: "password", placeholder: "Senha"})
+        </div>
+        <div class="md:w-full">
+          <label class="block text-gray-700 text-xs font-bold -mb-3 mt-3" for="confirm_password">
+            Confirme sua senha
+          </label>
+          @!form.input({type: "password", name: "confirm_password", placeholder: "Confirme sua Senha"})
+        </div>
         <input type="hidden" name="tipo" value={{ tipo }}>
         <input type="submit" value="Cadastrar"
-          class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer mt-10 p-4 mx-auto px-8 cursor-pointer">
+          class="fundo2 fonte text-xl hover:bg-gray-400 text-lg rounded-2xl cursor-pointer mt-8 p-4 mx-auto px-8 cursor-pointer">
       </form>
     </div>
   </div>

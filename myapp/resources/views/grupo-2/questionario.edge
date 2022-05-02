@@ -1,0 +1,276 @@
+@layout('layouts/main')
+
+@section('body')
+
+</head>
+
+<body class="fundo h-screen">
+    @!component('components/nav')
+    <div class="pt-3 px-12">
+        <h1 class="text-xl flex justify-center text-gray-800 font-bold mb-4">Questionário</h1>
+        <form class="flex-col" action="{{ route('quiz.store', {id: id}) }}" method="post">
+            {{ csrfField() }}
+            <div name=quest1 class="max-w-fit my-2">
+                <h2 class="font-bold my-1">Questão 1</h2>
+                <p>
+                    O índice de estabelecimentos fiscalizados e multados por baixa qualidade de alimentos do município
+                    aumentou no
+                    último ano. A prefeitura implantou um programa de treinamento para os trabalhadores envolvidos no
+                    setor
+                    de
+                    vigilância sanitária.
+                </p>
+                <div>
+                    <input class="align-middle" type="radio" name="quest1" id="quest1A" value="A">
+                    <label for="quest1A">a) A sentença 1 é a causa e a sentença 2 é o seu efeito</label>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest1" id="quest1B" value="B">
+                    <label for="quest1B">b) A sentença 2 é a causa e sentença 1 é o seu efeito</label>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest1" id="quest1C" value="C">
+                    <label for="quest1C">c) As sentenças 1 e 2 são causas independentes</label>
+                </div>
+                <div>
+                    <input class="align-middle" class="align-middle" type="radio" name="quest1" id="quest1D" value="D">
+                    <label for="quest1D">d) As sentenças 1 e 2 são efeitos de causas independentes</label>
+                </div>
+                <p class="hidden">
+                    R: Letra b
+                    O investimento da prefeitura no programa de treinamento para os trabalhadores envolvidos
+                    no setor de
+                    vigilância sanitária tem relação direta com o aumento da fiscalização.
+                </p>
+            </div>
+            <hr>
+            <div class="my-2">
+                <div class="mb-2">
+                    <h2 class="font-bold ">Questão 2</h2>
+                    <p>
+                        Filipe produziu trinta pães recheados para vender em sua padaria, sendo que vinte são recheados
+                        com
+                        calabresa e os
+                        outros com azeitona. A porcentagem dos pães de Filipe recheados de azeitona é de:
+                    </p>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest2" id="quest2A" value="A">
+                    <label for="quest2A">a) 66,66%</label>
+                </div>
+                <div>
+                    <input class="align-middle" class="" type="radio" name="quest2" id="quest2B" value="B">
+                    <label for="quest2B">b) 33,33%</label>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest2" id="quest2C" value="C">
+                    <label for="quest2C">c) 75%</label>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest2" id="quest2D" value="D">
+                    <label for="quest2D">d) 50%</label>
+                </div>
+                <p class="hidden">
+                    R: Letra "b"
+                </p>
+            </div>
+            <hr>
+            <div class="my-2">
+                <div class="mb-2">
+                    <h2 class="font-bold ">Questão 3</h2>
+                    <p>
+                        Haroldo comprou um automóvel financiando o valor devido em seu banco. A prestação paga
+                        mensalmente é
+                        de
+                        R$ 850,00.
+                        No mês de janeiro, ele pagou a parcela com atraso e por isso teve de pagar uma multa de 12%. O
+                        valor
+                        pago por essa
+                        parcela foi de:
+                    </p>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest3" id="quest3A" value="A">
+                    <label for="quest3A">a) R$ 875,50</label>
+                </div>
+                <div>
+                    <input class="align-middle" class="" type="radio" name="quest3" id="quest3B" value="B">
+                    <label for="quest3B">b) R$ 894,00</label>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest3" id="quest3C" value="C">
+                    <label for="quest3C">c) R$ 952,00</label>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest3" id="quest3D" value="D">
+                    <label for="quest3D">d) R$ 954,20</label>
+                </div>
+                <p class="hidden">
+                    R: Letra "C"
+                </p>
+            </div>
+            <hr>
+            <div class="my-2">
+                <div class="mb-2">
+                    <h2 class="font-bold ">Questão 4</h2>
+                    <p>
+                        Do meu salário dedico:
+                        - 25% ao aluguel;
+                        - 30% à alimentação;
+                        - 5% à compra de medicamentos;
+                        - 15% ao pagamento de mensalidades;
+                        O resto que me sobra são R$550,00 para lazer. Desta forma pode-se afirmar que meu salário tem o
+                        valor
+                        de:
+                    </p>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest4" id="quest4A" value="A">
+                    <label for="quest4A">a) R$ 3.000,00</label>
+                </div>
+                <div>
+                    <input class="align-middle" class="" type="radio" name="quest4" id="quest4B" value="B">
+                    <label for="quest4B">b) R$ 2.200,00</label>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest4" id="quest4C" value="C">
+                    <label for="quest4C">c) R$ 2.500,00</label>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest4" id="quest4D" value="D">
+                    <label for="quest4D">d) R$ 2.750,00</label>
+                </div>
+                <p class="hidden">
+                    R: Letra"B"
+                </p>
+            </div>
+            <hr>
+            <div class="my-2">
+                <div class="mb-2">
+                    <h2 class="font-bold ">Questão 5</h2>
+                    <p>
+                        Pedro, após visitar uma aldeia distante, afirmou: “Não
+                        é verdade que todos os aldeões daquela aldeia não dormem a sesta”.
+                        A condição necessária e suficiente para que a afirmação de Pedro
+                        seja verdadeira é que seja verdadeira a seguinte proposição:
+                    </p>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest5" id="quest5A" value="A">
+                    <label for="quest5A">a) No máximo um aldeão daquela aldeia não dorme a sesta.</label>
+                </div>
+                <div>
+                    <input class="align-middle" class="" type="radio" name="quest5" id="quest5B" value="B">
+                    <label for="quest5B">b) Todos os aldeões daquela aldeia dormem a sesta.</label>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest5" id="quest5C" value="C">
+                    <label for="quest5C">c) Nenhum aldeão daquela aldeia dorme a sesta.</label>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest5" id="quest5D" value="D">
+                    <label for="quest5D">d) Pelo menos um aldeão daquela aldeia dorme a sesta.</label>
+                </div>
+                <p class="hidden">
+                    R: Letra"D"
+                </p>
+            </div>
+            <hr>
+            <div class="my-2">
+                <div class="mb-2">
+                    <h2 class="font-bold ">Questão 6</h2>
+                    <p>
+                        Dizer que "Heber não é pedreiro ou João é paulista" é,
+                        do ponto de vista lógico, o mesmo que dizer que:
+                    </p>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest6" id="quest6A" value="A">
+                    <label for="quest6A">a) Se Heber é pedreiro, então João é paulista.</label>
+                </div>
+                <div>
+                    <input class="align-middle" class="" type="radio" name="quest6" id="quest6B" value="B">
+                    <label for="quest6B">b) Se João é paulista, então Heber é pedreiro.</label>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest6" id="quest6C" value="C">
+                    <label for="quest6C">c) Se Heber é pedreiro, então João não é paulista.</label>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest6" id="quest6D" value="D">
+                    <label for="quest6D">d) Se Heber não é pedreiro, então João não é paulista.</label>
+                </div>
+                <p class="hidden">
+                    R: Letra"A"
+                </p>
+            </div>
+            <hr>
+            <div class="my-2">
+                <div class="mb-2">
+                    <h2 class="font-bold ">Questão 7</h2>
+                    <p>
+                        Considere a sentença: "Todo estudante que gosta de Matemática também gosta de Ciências
+                        Biológicas."
+                        Considerando que essa sentença é falsa, é correto afirmar que:
+                    </p>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest7" id="quest7A" value="A">
+                    <label for="quest7A">a) Se Heber é pedreiro, então João é paulista.</label>
+                </div>
+                <div>
+                    <input class="align-middle" class="" type="radio" name="quest7" id="quest7B" value="B">
+                    <label for="quest7B">b) Se João é paulista, então Heber é pedreiro.</label>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest7" id="quest7C" value="C">
+                    <label for="quest7C">c) Se Heber é pedreiro, então João não é paulista.</label>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest7" id="quest7D" value="D">
+                    <label for="quest7D">d) Se Heber não é pedreiro, então João não é paulista.</label>
+                </div>
+                <p class="hidden">
+                    R: Letra"A"
+                </p>
+            </div>
+            <hr>
+            <div class="my-2">
+                <div class="mb-2">
+                    <h2 class="font-bold ">Questão 8</h2>
+                    <p>
+                        Selecione a opção correta que preenche a lacuna da série: MCD, NEF, OGH,__, QKL
+                    </p>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest8" id="quest8A" value="A">
+                    <label for="quest8A">a) CMN</label>
+                </div>
+                <div>
+                    <input class="align-middle" class="" type="radio" name="quest8" id="quest8B" value="B">
+                    <label for="quest8B">b) UJI</label>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest8" id="quest8C" value="C">
+                    <label for="quest8C">c) PIJ</label>
+                </div>
+                <div>
+                    <input class="align-middle" type="radio" name="quest8" id="quest8D" value="D">
+                    <label for="quest8D">d) IJT</label>
+                </div>
+                <p class="hidden">
+                    Resposta: c
+                </p>
+            </div>
+            <input type="hidden" name="index" value="{{ id }}">
+            <input type="hidden" name="vagaID" value="{{ vagaID }}">
+            <div class="flex justify-center">
+                <span class="self-end mt-2">
+                    <input type="submit" value="Enviar" class="text-white bg-indigo-500 border-0 
+                    py-2 px-5 focus:outline-none hover:bg-indigo-600 cursor-pointer rounded text-lg">
+                </span>
+            </div>
+        </form>
+    </div>
+</body>
+@end

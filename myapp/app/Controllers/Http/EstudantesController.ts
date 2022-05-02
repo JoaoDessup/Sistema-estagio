@@ -24,10 +24,10 @@ export default class EstudantesController {
     return ctx.response.redirect().toRoute('sessions.login')
   }
 
-  public async show({auth, view}: HttpContextContract) {
-      const estudante = await Estudante.findByOrFail('user_id', auth.user?.id)
-      const user = auth.user
-      return view.render('perfil', {estudante,user})  
+  public async show({ auth, view }: HttpContextContract) {
+    const estudante = await Estudante.findByOrFail('user_id', auth.user?.id)
+    const user = auth.user
+    return view.render('perfil', { estudante, user })
   }
 
   public async edit({}: HttpContextContract) {}

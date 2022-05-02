@@ -24,6 +24,12 @@
   font: bold;
 }
 
+.fonte3 {
+  font-family: 'Poppins';
+  color: #070000;
+  font: bold;
+}
+
 .bg-gray-800{
 background-color: rgb(31 41 55);
 }

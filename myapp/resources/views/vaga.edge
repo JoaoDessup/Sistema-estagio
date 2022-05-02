@@ -4,92 +4,132 @@
 
 <body class="fundo h-full">
     @!component('components/nav')
-    {{--  <h1 class="ml-10 my-10 font-sans font-medium text-2xl"> {{ index }}</h1> --}}
-    <!-- This example requires Tailwind CSS v2.0+ -->
-    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">Vaga {{ index }}</h3>
-            <p class="mt-1 max-w-2xl text-sm text-gray-500">Detalhes sobre a vaga</p>
-        </div>
-        <div class="border-t border-gray-200">
-            <dl>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">Nome</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ vaga.nome }}</dd>
-                </div>
-                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">Estado</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ vaga.estado }}</dd>
-                </div>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">Cidade</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ vaga.cidade }}</dd>
-                </div>
-                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">Salário</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">R${{ vaga.salario }}</dd>
-                </div>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">Área</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ vaga.area }}</dd>
-                </div>
-                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">Tipo</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ vaga.tipo }}</dd>
-                </div>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">Descrição</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                        {{ vaga.descricao }}
-                    </dd>
-                </div>
-        </div>
-        @if(tipo=='empresa')
-        <div class="flex items-center justify-center">
-            <form action="{{ route('vagas.destroy', {id: vaga.id}) }}" method="POST">
-                {{ csrfField() }}
-                <input type="submit" value="Deletar"
-                    class="fundo3 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer my-5 p-4 mx-auto px-8 cursor-pointer">
-            </form>
-        </div>
-        <div class="flex items-center justify-center">
-            <form action="{{ route('vagas.inscritos', {id: index}) }}" method="get">
-                <input type="submit" value="Ver Inscritos"
-                    class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer my-5 p-4 mx-auto px-8 cursor-pointer">
-            </form>
-        </div>
-        @else
-        <div class="flex items-center justify-center">
-            @if(bloqueado)
-            <div class=" my-5 p-4 mx-auto px-8 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path fill-rule="evenodd"
-                        d="M13.477 14.89A6 6 0 015.11 6.524l8.367 8.368zm1.414-1.414L6.524 5.11a6 6 0 018.367 8.367zM18 10a8 8 0 11-16 0 8 8 0 0116 0z"
-                        clip-rule="evenodd" />
-                </svg>
-                <p class="text-red-600 mx-2">Você não está elegível para essa vaga</p>
-            </div>
-            @elseif(inscrito)
-            <form action="{{ route('vagas.dissociate') }}" method="POST">
-                {{ csrfField() }}
-                <input type="hidden" name="id" value="{{ index }}">
-                <input type="hidden" name="vaga_id" value="{{ vaga.id }}">
-                <input type="submit" value="Sair da vaga"
-                    class="fundo3 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer my-10 p-4 mx-auto px-8 cursor-pointer">
-            </form>
 
+    <div class="container px-5 py-12 mx-auto flex flex-wrap">
+        <div class="lg:w-2/3 mx-auto">
+            <p class="flex justify-center text-4xl text-gray-800 font-bold mb-4">Descrição da Vaga {{ index }}</p>
+            <div class="flex flex-wrap w-full bg-gray-800 rounded-lg py-14 px-10 relative mb-4">
+                <div class="w-full mb-6">
+                    <h2 class="text-2xl fonte font-medium title-font mb-2 flex justify-center">Nome</h2>
+                    <p class="flex justify-center bg-white text-gray-800 font-bold text-lg rounded-lg p-1">
+                        {{ vaga.nome }}
+                    </p>
+                </div>
+                <div class="w-full mb-6">
+                    <h2 class="text-2xl fonte font-medium title-font mb-2 flex justify-center">Estado</h2>
+                    <p class="flex justify-center bg-white text-gray-800 font-bold text-lg rounded-lg p-1">
+                        {{vaga.estado}}
+                    </p>
+                </div>
+                <div class="w-full mb-6">
+                    <h2 class="text-2xl fonte font-medium title-font mb-2 flex justify-center">Cidade</h2>
+                    <p class="flex justify-center bg-white text-gray-800 font-bold text-lg rounded-lg p-1">
+                        {{ vaga.cidade }}
+                    </p>
+                </div>
+                <div class="w-full mb-6">
+                    <h2 class="text-2xl fonte font-medium title-font mb-2 flex justify-center">Salário</h2>
+                    <p class="flex justify-center bg-white text-gray-800 font-bold text-lg rounded-lg p-1">
+                        R${{ vaga.salario }}
+                    </p>
+                </div>
+                <div class="w-full mb-6">
+                    <h2 class="text-2xl fonte font-medium title-font mb-2 flex justify-center">Área</h2>
+                    <p class="flex justify-center bg-white text-gray-800 font-bold text-lg rounded-lg p-1">
+                        {{ vaga.area }}
+                    </p>
+                </div>
+                <div class="w-full mb-6">
+                    <h2 class="text-2xl fonte font-medium title-font mb-2 flex justify-center">Tipo</h2>
+                    <p class="flex justify-center bg-white text-gray-800 font-bold text-lg rounded-lg p-1">
+                        {{ vaga.tipo }}
+                    </p>
+                </div>
+                <div class="w-full mb-6">
+                    <h2 class="text-2xl fonte font-medium title-font mb-2 flex justify-center">Descrição</h2>
+                    <p class="flex justify-center bg-white text-gray-800 font-bold text-lg rounded-lg p-1">
+                        {{ vaga.descricao }}
+                    </p>
+                </div>
+                @if(tipo=='estudante')
+                <div class="w-full mb-6">
+                    <h2 class="text-2xl fonte font-medium title-font mb-2 flex justify-center">Pontuação</h2>
+                    <p class="flex justify-center bg-white text-gray-800 font-bold text-lg rounded-lg p-1">
+                        @if(pontuacao === null)
+                        -/8
+                        @else
+                        {{ pontuacao }}/8
+                        @endif
+
+                    </p>
+                </div>
+                @endif
+            </div>
+            @if(tipo=='empresa')
+            <div class="container flex justify-between">
+                <div class="flex items-center justify-center">
+                    <form action="{{ route('vagas.destroy', {id: vaga.id}) }}" method="POST">
+                        {{ csrfField() }}
+                        <input type="submit" value="Deletar"
+                            class="fundo3 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer my-5 p-4 mx-auto px-8 cursor-pointer">
+                    </form>
+                </div>
+                <div class="flex items-center justify-center">
+                    <form action="{{ route('vagas.inscritos', {id: index}) }}" method="get">
+                        <input type="submit" value="Ver Inscritos"
+                            class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer my-5 p-4 mx-auto px-8 cursor-pointer">
+                    </form>
+                </div>
+            </div>
             @else
-            <form action="{{ route('vagas.associate') }}" method="POST">
-                {{ csrfField() }}
-                <input type="hidden" name="id" value="{{ index }}">
-                <input type="hidden" name="vaga_id" value="{{ vaga.id }}">
-                <input type="submit" value="Inscrever-se"
-                    class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer my-10 p-4 mx-auto px-8 cursor-pointer">
-            </form>
+            <div class="container flex 
+                @if(bloqueado)
+                justify-center">
+                <div class=" my-5 p-4 mx-auto px-8 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M13.477 14.89A6 6 0 015.11 6.524l8.367 8.368zm1.414-1.414L6.524 5.11a6 6 0 018.367 8.367zM18 10a8 8 0 11-16 0 8 8 0 0116 0z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <p class="text-red-600 mx-2">Você não está elegível para essa vaga</p>
+                </div>
+                @elseif(inscrito)
+                @if(pontuacao === null)
+                justify-between">
+                @else
+                justify-center">
+                @endif
+                <form action="{{ route('vagas.dissociate') }}" method="POST">
+                    {{ csrfField() }}
+                    <input type="hidden" name="id" value="{{ index }}">
+                    <input type="hidden" name="vaga_id" value="{{ vaga.id }}">
+                    <input type="submit" value="Sair da vaga"
+                        class="fundo3 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer my-10 p-4 mx-auto px-8 cursor-pointer">
+                </form>
+                @if(pontuacao === null)
+                <form action="{{ route('quiz.show', {id: index}) }}" method="get">
+                    <input type="hidden" name="vagaID" value="{{ vaga.id }}">
+                    <input type="submit" value="Responder ao questionário"
+                        class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer my-10 p-4 mx-auto px-8 cursor-pointer">
+                </form>
+                @endif
+                @else
+                justify-center">
+                <form action="{{ route('vagas.associate') }}" method="POST">
+                    {{ csrfField() }}
+                    <input type="hidden" name="id" value="{{ index }}">
+                    <input type="hidden" name="vaga_id" value="{{ vaga.id }}">
+                    <input type="submit" value="Inscrever-se"
+                        class="fundo2 fonte text-xl hover:bg-gray-400 rounded-2xl cursor-pointer my-10 p-4 mx-auto px-8 cursor-pointer">
+                </form>
+                @endif
+            </div>
             @endif
         </div>
-        @endif
+    </div>
+
+
 </body>
 
 

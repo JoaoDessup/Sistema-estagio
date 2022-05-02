@@ -1,25 +1,71 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/app.css') }}">
 <header class="bg-gray-800 text-white body-font">
-  <div class="mx-auto flex p-3 flex-col md:flex-row items-center justify-center">
+  <nav>
+    <div class="mx-auto px-4">
+      <div class="flex justify-between">
+        <div class="flex space-x-7">
 
-    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-      <img src="/images/logo.png" alt="logo" class="w-24 bg-white rounded-full">
-    </a>
+          <div class="m-2">
+            <a class="flex title-font font-medium items-center text-gray-900">
+              <img src="/images/logo.png" alt="logo" class="w-16 bg-white rounded-lg">
+            </a>
+          </div>
 
-    <nav
-      class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex items-center text-base justify-center container">
-      <a href="/index/estudante" title="Feed" class="mx-10 hover:text-blue-500">Feed</a>
-      <a href="/chat" title="Mensagens" class="mx-10 hover:text-blue-500">Mensagens</a>
-      <a href="/faq" title="FAQ" class="mx-10 hover:text-blue-500">FAQ</a>
-    </nav>
+          <div class="hidden md:flex items-center space-x-1">
+            <a href="/perfil" class="ml-3 p-2 rounded-md hover:bg-gray-500 transition duration-300">Meu Perfil</a>
+            {{--  <a href="/vagas" class="p-2 rounded-md hover:bg-gray-500 transition duration-300">Minhas Vagas</a>  --}}
+            <a href="/index/estudante" title="Feed"
+              class="p-2 rounded-md hover:bg-gray-500 transition duration-300">Feed</a>
+            <a href="/chat" title="Mensagens"
+              class="p-2 rounded-md hover:bg-gray-500 transition duration-300">Mensagens</a>
+            <a href="/faq" title="FAQ" class="p-2 rounded-md hover:bg-gray-500 transition duration-300">FAQ</a>
+          </div>
+        </div>
+        <div class="hidden md:flex items-center space-x-3 ">
+          <a href="/logout" class="p-2 font-medium rounded hover:bg-gray-500 transition duration-300">Logout</a>
+        </div>
 
-    {{--  <button title="Logout" onclick="window.location='/login'" class="inline-flex items-center bg-blue-500 border-0 py-1 px-3 focus:outline-none hover:bg-gray-500 rounded text-base mt-4 md:mt-0">Logout
+        <div class="md:hidden flex items-center">
+          <button class="outline-none mobile-menu-button">
+            <svg class=" w-10 h-10 text-gray-500 hover:text-green-500 " x-show="!showMenu" fill="none"
+              stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hidden mobile-menu">
+      <ul>
+        <li class="active block text-sm hover:bg-gray-500 font-semibold">
+          <a href="/index/estudante" title="Feed" class="mx-10">Feed</a>
+        </li>
+        <li class="block hover:bg-gray-500 transition duration-300">
+          <a href="/chat" title="Mensagens" class="mx-10 hover:bg-gray-500 transition duration-300">Mensagens</a>
+        </li>
+        <li class="block hover:bg-gray-500 transition duration-300">
+          <a href="/faq" title="FAQ" class="mx-10 ">FAQ</a>
+        </li>
+      </ul>
+    </div>
+    <script>
+      const btn = document.querySelector("button.mobile-menu-button");
+      const menu = document.querySelector(".mobile-menu");
+
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+    </script>
+  </nav>
+
+  {{--  <button title="Logout" onclick="window.location='/login'" class="inline-flex items-center bg-blue-500 border-0 py-1 px-3 focus:outline-none hover:bg-gray-500 rounded text-base mt-4 md:mt-0">Logout
       <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
         <path d="M5 12h14M12 5l7 7-7 7"></path>
       </svg>
     </button>  --}}
 
-    <div class="dropdown px-10 flex items-start justify-center">
+  {{--  <div class="dropdown px-10 flex items-start justify-center">
       <button class="dropbtn">Menu
         <i class="fa fa-caret-down"></i>
       </button>
@@ -27,8 +73,6 @@
         <a href="/perfil" class="p-2">Meu Perfil</a>
         <a href="#" class="p-2">Minhas Vagas</a>
         <a href="/logout" class="p-2">Logout</a>
-      </div>
-    </div>
+      </div>  --}}
 
-  </div>
 </header>

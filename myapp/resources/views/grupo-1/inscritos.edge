@@ -4,32 +4,64 @@
 
 <body class="fundo h-screen">
     @!component('components/nav')
-    <h1 class="ml-10 my-10 font-sans font-medium text-2xl">INSCRITOS</h1>
-    @if(inscritos.length > 0)
-    @each(inscrito in inscritos)
-    <p>{{ inscrito.name }}</p>
-    <form action="{{ route('vagas.remove', { id: index }) }}" method="post">
-        {{ csrfField() }}
-        <input type="hidden" name="estudanteID" value={{ inscrito.id }}>
-        <input type="hidden" name="vagaID" value={{ vaga.id }}>
-        <input type="submit" value="Remover">
-    </form>
-    @end
-    @else
-    <p>Não há inscritos nessa vaga</p>
-    @endif
-    @if(bloqueados.length > 0)
-    <h1 class="ml-10 my-10 font-sans font-medium text-2xl">BLOQUEADOS</h1>
-    @each(bloqueado in bloqueados)
-    <p>{{ bloqueado.name }}</p>
-    <form action="{{ route('vagas.replace', { id: index }) }}" method="post">
-        {{ csrfField() }}
-        <input type="hidden" name="estudanteID" value={{ bloqueado.id }}>
-        <input type="hidden" name="vagaID" value={{ vaga.id }}>
-        <input type="submit" value="Reinserir">
-    </form>
-    @end
-    @endif
+    <div class="container flex justify-between mx-auto mt-20">
+        <div class="bg-gray-800 mx-auto rounded-lg">
+            <div class="flex justify-between my-10 mx-40">
+                <h1 class="font-sans font-medium text-2xl font-bold text-white ">INSCRITOS</h1>
+            </div>
+            @if(inscritos.length > 0)
+            <div class="container flex justify-evenly mb-6">
+                <h1 class="font-sans font-medium text-2xl font-bold text-white mr-6">Nome</h1>
+                <h1 class="font-sans font-medium text-2xl font-bold text-white mr-24">Pontuação</h1>
+            </div>
+            @each(inscrito in vec)
+            <div class="container flex justify-between">
+                <p class="mx-4 fonte text-md">{{ inscrito[1].name }}</p>
+                <p class="mx-4 fonte">
+                    @if (inscrito[0] === null)
+                    -/8
+                    @else
+                    {{inscrito[0]}}/8
+                    @endif
+                </p>
+                <form action="{{ route('vagas.remove', { id: index }) }}" method="post" class="mb-2 mx-4">
+                    {{ csrfField() }}
+                    <input type="hidden" name="estudanteID" value={{ inscrito[1].id }}>
+                    <input type="hidden" name="vagaID" value={{ vaga.id }}>
+                    <input type="submit" value="Remover"
+                        class="fundo3 fonte hover:bg-gray-400 rounded-2xl cursor-pointer mx-auto px-2 cursor-pointer">
+                </form>
+            </div>
+            @end
+            @else
+            <p class="flex justify-center fonte mt-14">Não há inscritos nessa vaga</p>
+            @endif
+        </div>
+        <div class="bg-gray-800 mx-auto rounded-lg">
+            <div class="flex justify-between my-10 mx-40">
+                <h1 class="font-sans font-medium text-2xl font-bold text-white ">BLOQUEADOS</h1>
+            </div>
+            @if(bloqueados.length > 0)
+            <div class="container flex justify-start mb-6">
+                <h1 class="font-sans font-medium text-2xl font-bold text-white ml-12">Nome</h1>
+            </div>
+            @each(bloqueado in bloqueados)
+            <div class="container flex justify-between">
+                <p class="mx-4 fonte text-md">{{ bloqueado.name }}</p>
+                <form action="{{ route('vagas.replace', { id: index }) }}" method="post" class="mb-2 mx-4">
+                    {{ csrfField() }}
+                    <input type="hidden" name="estudanteID" value={{ bloqueado.id }}>
+                    <input type="hidden" name="vagaID" value={{ vaga.id }}>
+                    <input type="submit" value="Reinserir"
+                        class="fundo2 fonte hover:bg-gray-400 rounded-2xl cursor-pointer mx-auto px-2 cursor-pointer">
+                </form>
+            </div>
+            @end
+            @else
+            <p class="flex justify-center fonte mt-14">Não há usuários bloqueados nessa vaga</p>
+            @endif
+        </div>
+    </div>
 
 </body>
 
